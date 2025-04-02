@@ -58,10 +58,11 @@ public:
     // Setters
     void setVardas(const string &v);
     void setPavarde(const string &p);
-    void setNd(const vector<int> &n);
-    void setEgz(int e);
+    void setNd(const int &n);
+    void setEgz();
     void setVid(double v);
     void setMed(double m);
+    void setReserveNd(int n);
 };
 
 

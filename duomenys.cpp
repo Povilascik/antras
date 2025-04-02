@@ -7,49 +7,55 @@ vector<duomenys> blogis;
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 // Getters
-std::string Studentai::getVardas() const { return vardas; }
-std::string Studentai::getPavarde() const { return pavarde; }
-std::vector<int> Studentai::getNd() const { return nd; }
+string Studentai::getVardas() const { return vardas; }
+string Studentai::getPavarde() const { return pavarde; }
+vector<int> Studentai::getNd() const { return nd; }
 int Studentai::getEgz() const { return egz; }
 double Studentai::getVid() const { return vid; }
 double Studentai::getMed() const { return med; }
 
 // Setters
-void Studentai::setVardas(const std::string &v) { vardas = v; }
-void Studentai::setPavarde(const std::string &p) { pavarde = p; }
-void Studentai::setNd(const std::vector<int> &n) { nd = n; }
-void Studentai::setEgz(int e) { egz = e; }
+void Studentai::setVardas(const string &v) { vardas = v; }
+void Studentai::setPavarde(const string &p) { pavarde = p; }
+void Studentai::setNd(const int &n) { nd.push_back(n); }
+void Studentai::setEgz() {
+    egz = nd.back();
+    nd.pop_back();
+}
 void Studentai::setVid(double v) { vid = v; }
 void Studentai::setMed(double m) { med = m; }
+void Studentai::setReserveNd(int n) { nd.reserve(n); }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 template<typename Container>
 void readas(const string &filename, Container &studentai) {
+    duomenys student;
     ifstream in(filename);
     string line;
     getline(in, line); // Skip header
     studentai.reserve(10000000);
     while (getline(in, line)) {
         stringstream iss(line);
-        duomenys student;
+        Studentai studentai_klase;
         iss >> student.vardas >> student.pavarde;
+        studentai_klase.setVardas(student.vardas);
+        studentai_klase.setPavarde(student.pavarde);
         int paz;
-        student.nd.reserve(6);
+        studentai_klase.setReserveNd(6);
         while (iss >> paz) {
-            if (paz >= 0 && paz <= 10) student.nd.push_back(paz);
+            if (paz >= 0 && paz <= 10) studentai_klase.setNd(paz);
         }
-        student.egz = student.nd.back();
-        student.nd.pop_back();
+        studentai_klase.setEgz();
         studentai.push_back(move(student));
     }
     cout << "read- baigta\n";
     in.close();
 
     for (auto &student : studentai) {
-        student.vid = galutinis_vid(student.nd, student.egz);
-        student.med = galutinis_med(student.nd, student.egz);
+        studentai.setVid(galutinis_vid(student.nd, student.egz));
+        studentai.setMed(galutinis_med(student.nd, student.egz));
     }
     cout << "vid. suskaicuotas\n";
 }
@@ -57,12 +63,12 @@ void readas(const string &filename, Container &studentai) {
 template<typename Container>
 double dalina(Container &studentai, Container &blogis) {
     auto start = chrono::high_resolution_clock::now();
-    stable_sort(studentai.begin(), studentai.end(), [](const duomenys &a, const duomenys &b) {
-        return a.vid < b.vid;
+    stable_sort(studentai.begin(), studentai.end(), [](const Studentai &a, const Studentai &b) {
+        return a.getVid() < b.getVid();
     });
     auto end = chrono::high_resolution_clock::now();
-    auto it = find_if(studentai.begin(), studentai.end(), [](const duomenys &student) {
-        return student.vid >= 5;
+    auto it = find_if(studentai.begin(), studentai.end(), [](const Studentai &student) {
+        return student.getVid() >= 5;
     });
 
     blogis.insert(blogis.end(), make_move_iterator(studentai.begin()), make_move_iterator(it));
@@ -88,23 +94,23 @@ void sortass(Container &studentai) {
 
         switch (pasirinkimas) {
             case 1:
-                stable_sort(studentai.begin(), studentai.end(), [](const duomenys &a, const duomenys &b) {
-                    return a.vardas < b.vardas;
+                stable_sort(studentai.begin(), studentai.end(), [](const Studentai &a, const Studentai &b) {
+                    return a.getVardas() < b.getVardas();
                 });
                 break;
             case 2:
-                stable_sort(studentai.begin(), studentai.end(), [](const duomenys &a, const duomenys &b) {
-                    return a.pavarde < b.pavarde;
+                stable_sort(studentai.begin(), studentai.end(), [](const Studentai &a, const Studentai &b) {
+                    return a.getPavarde() < b.getPavarde();
                 });
                 break;
             case 3:
-                stable_sort(studentai.begin(), studentai.end(), [](const duomenys &a, const duomenys &b) {
-                    return a.vid > b.vid;
+                stable_sort(studentai.begin(), studentai.end(), [](const Studentai &a, const Studentai &b) {
+                    return a.getVid() > b.getVid();
                 });
                 break;
             case 4:
-                stable_sort(studentai.begin(), studentai.end(), [](const duomenys &a, const duomenys &b) {
-                    return a.med > b.med;
+                stable_sort(studentai.begin(), studentai.end(), [](const Studentai &a, const Studentai &b) {
+                    return a.getMed() > b.getMed();
                 });
                 break;
         }
@@ -123,9 +129,9 @@ void write_to_file(const string &filename, const Container &studentai) {
             "Galutinis (Vid.) / Galutinis (Med.)" << endl;
     out << "------------------------------------------------------------" << endl;
     for (const auto &student: studentai) {
-        out << setw(20) << left << student.vardas << " " << setw(20) << left << student.pavarde << " " << setw(20) <<
-                left << fixed << setprecision(2) << student.vid << setw(20) << left << fixed << setprecision(2) <<
-                student.vid << "\n";
+        out << setw(20) << left << student.getVardas() << " " << setw(20) << left << student.getPavarde() << " " << setw(20) <<
+                left << fixed << setprecision(2) << student.getVid() << setw(20) << left << fixed << setprecision(2) <<
+                student.getVid() << "\n";
     }
     cout << "write - baigta\n";
     out.close();
