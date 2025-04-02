@@ -34,8 +34,40 @@ using std::ofstream;
 using std::time;
 using std::srand;
 using std::rand;
+//////////////////////////////////////////////////////////
+///klases.
+
+class Studentai {
+private:
+    string vardas;
+    string pavarde;
+    vector<int> nd;
+    int egz;
+    double vid;
+    double med;
+
+public:
+    // Getters
+    string getVardas() const;
+    string getPavarde() const;
+    vector<int> getNd() const;
+    int getEgz() const;
+    double getVid() const;
+    double getMed() const;
+
+    // Setters
+    void setVardas(const string &v);
+    void setPavarde(const string &p);
+    void setNd(const vector<int> &n);
+    void setEgz(int e);
+    void setVid(double v);
+    void setMed(double m);
+};
 
 
+
+
+//////////////////////////////////////////////////////////
 
 struct duomenys {
     // apsirasoma struktura duomenims saugoti.

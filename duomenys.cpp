@@ -4,6 +4,25 @@
 std::unordered_map<int, string> umap;
 
 vector<duomenys> blogis;
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+// Getters
+std::string Studentai::getVardas() const { return vardas; }
+std::string Studentai::getPavarde() const { return pavarde; }
+std::vector<int> Studentai::getNd() const { return nd; }
+int Studentai::getEgz() const { return egz; }
+double Studentai::getVid() const { return vid; }
+double Studentai::getMed() const { return med; }
+
+// Setters
+void Studentai::setVardas(const std::string &v) { vardas = v; }
+void Studentai::setPavarde(const std::string &p) { pavarde = p; }
+void Studentai::setNd(const std::vector<int> &n) { nd = n; }
+void Studentai::setEgz(int e) { egz = e; }
+void Studentai::setVid(double v) { vid = v; }
+void Studentai::setMed(double m) { med = m; }
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 template<typename Container>
@@ -119,8 +138,6 @@ void split_into_two_containers(const Container& studentai, Container& vargsiukai
          else kietiakai.push_back(student);
     }
 }
-
-
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 void meniu(vector<duomenys> &studentai) {
@@ -266,8 +283,8 @@ void meniu(vector<duomenys> &studentai) {
                         if (cin.fail() || pasirinkimas1 < 1 || pasirinkimas1 > 5) {
                             throw invalid_argument("Neteisingas ivestis.");
                         }
-                        if (pasirinkimas1 > 5 || pasirinkimas1 < 1) {
-                            throw invalid_argument("Neteisingas ivestis.");
+                        if (pasirinkimas1 > 5 || pasirinkimas1 < 1 || !umap.count(pasirinkimas1)+ ".txt") {
+                            throw invalid_argument("Failas " + umap[pasirinkimas1] + ".txt nerastas.");
                         }
                         auto nuskaitymas_pradzia = chrono::high_resolution_clock::now();
                         readas(umap[pasirinkimas1] + ".txt", studentai);

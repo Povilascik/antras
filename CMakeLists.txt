@@ -23,3 +23,4 @@ endif()
 
 set(TEST_FILE_LOCATION "${CMAKE_SOURCE_DIR}/")
 target_compile_definitions(programa PRIVATE TEST_FILE_LOCATION="${TEST_FILE_LOCATION}")
+
