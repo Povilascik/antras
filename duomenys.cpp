@@ -266,12 +266,12 @@ void meniu(vector<Studentai> &studentai) {
                         ContainerType blogis;
                         ContainerType kietiakai;
 
-                        cout << "pasirinkite, kuria strategija norite naudoti: \n"
-                                << "1 Strategija \n"
-                                << "2 Strategija \n"
-                                << "3 Strategija \n";
-                        int strategija;
-                        cin >> strategija;
+                        // cout << "pasirinkite, kuria strategija norite naudoti: \n"
+                        //         << "1 Strategija \n"
+                        //         << "2 Strategija \n"
+                        //         << "3 Strategija \n";
+                        int strategija=2;
+                        //cin >> strategija;
                         if (cin.fail() || strategija < 1 || strategija > 3) {
                             throw invalid_argument("Neteisinga ivestis.");
 
