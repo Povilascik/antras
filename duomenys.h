@@ -18,7 +18,6 @@
 const std::string test_file_location = TEST_FILE_LOCATION;      // skirtas naudoti SU CMake
 // const std::string test_file_location = "";                   // skirtas naudoti BE CMake
 
-struct blogi;
 using std::cout;
 using std::cin;
 using std::endl;
@@ -47,8 +46,11 @@ private:
     double med;
 
 public:
-
+    // Default constructor
     Studentai() : egz(0), vid(0), med(0) {}
+
+    // Default destructor
+    ~Studentai();
 
     // Getters
     string getVardas() const;
