@@ -284,9 +284,9 @@ void meniu(vector<Studentai> &studentai) {
                         if (cin.fail() || pasirinkimas1 < 1 || pasirinkimas1 > 5) {
                             throw invalid_argument("Neteisingas ivestis.");
                         }
-                        if (pasirinkimas1 > 5 || pasirinkimas1 < 1 || !umap.count(pasirinkimas1) + ".txt") {
-                            throw invalid_argument("Failas " + umap[pasirinkimas1] + ".txt nerastas.");
-                        }
+                        // if (pasirinkimas1 > 5 || pasirinkimas1 < 1 || !umap.count(pasirinkimas1) + ".txt") {
+                        //     throw invalid_argument("Failas " + umap[pasirinkimas1] + ".txt nerastas.");
+                        // }
                         auto nuskaitymas_pradzia = chrono::high_resolution_clock::now();
                         readas(umap[pasirinkimas1] + ".txt", studentai);
                         auto nuskaitymas_pabaiga = chrono::high_resolution_clock::now();
@@ -533,7 +533,7 @@ void write_file(const string &filename, vector<Studentai> &studentai, int nd_ska
     out.close();
 }
 
-void make_file(vector<duomenys> &studentai, const string &filename, int mok_sk, int paz_sk) {
+void make_file(vector<Studentai>& studentai, const string& filename, int mok_sk, int paz_sk) {
     generuoti_vard(studentai, paz_sk, mok_sk);
     write_file(filename, studentai, paz_sk);
 }
@@ -554,22 +554,27 @@ void generuoti_paz(Studentai &student, int paz_sk) {
     student.setMed(galutinis_med(nd, egz));
 }
 
-void generuoti_paz_ranka(vector<duomenys> &studentai) {
-    duomenys student;
+void generuoti_paz_ranka(vector<Studentai> &studentai) {
+    Studentai student;
     while (true) {
-        // ciklas veikia tol, kol neivedamas 'p'
         try {
             cout << "Iveskite studento varda (iveskite 'p' norint uzbaigti): ";
-            cin >> student.vardas;
-            if (student.vardas == "p") break;
+            string vardas;
+            cin >> vardas;
+            if (vardas == "p") break;
+            student.setVardas(vardas);
+
             cout << "Iveskite studento pavarde: ";
-            cin >> student.pavarde;
+            string pavarde;
+            cin >> pavarde;
             if (cin.fail()) {
                 throw invalid_argument("Neteisingas ivestis.");
             }
-            int paz_sk = rand() % 10 + 1; // sugeneruoja atsitiktini pazymiu skaiciu
-            generuoti_paz(student, paz_sk); // generuoja pazymius
-            studentai.push_back(student); // ideda studento duomenis i bendra vektoriu
+            student.setPavarde(pavarde);
+
+            int paz_sk = rand() % 10 + 1;
+            generuoti_paz(student, paz_sk);
+            studentai.push_back(student);
         } catch (const exception &e) {
             cout << "Klaida: " << e.what() << endl;
             cin.clear();
@@ -577,23 +582,35 @@ void generuoti_paz_ranka(vector<duomenys> &studentai) {
     }
 }
 
-void generuoti_vard(vector<duomenys> &studentai, int paz_sk1, int mok_sk) {
+void generuoti_vard(vector<Studentai> &studentai, int paz_sk1, int mok_sk) {
     int vard_sk;
     if (mok_sk != 0) vard_sk = mok_sk;
-    else vard_sk = rand() % 100 + 1; // sugeneruoja atsitiktini skaiciu, kuris rodo kiek bus zmoniu
+    else vard_sk = rand() % 100 + 1;
 
     int paz_sk;
     if (paz_sk1 != 0) paz_sk = paz_sk1;
-    else paz_sk = rand() % 10 + 1; // sugeneruoja atsitiktini pazymiu skaiciu
+    else paz_sk = rand() % 10 + 1;
 
     for (int i = 0; i < vard_sk; i++) {
-        Studentai studentai_klase;
-        studentai_klase.setVardas(to_string(rand() % 26 + 65) + "."); // generuoja atsitiktini iniciala vardui
-        //studentai_klase.setVardas(".");
-        studentai_klase.setPavarde(to_string(rand() % 26 + 65) + "."); // generuoja atsitiktini iniciala pavardei
-        //studentai_klase.setPavarde(".");
-        duomenys student;
-        generuoti_paz(student, paz_sk); // generuoja pazymius
+        Studentai student;
+        string vardas = string(1, char(rand() % 26 + 65)) + ".";
+        string pavarde = string(1, char(rand() % 26 + 65)) + ".";
+
+        student.setVardas(vardas);
+        student.setPavarde(pavarde);
+
+        vector<int> nd;
+        for (int j = 0; j < paz_sk - 1; j++) {
+            nd.push_back(rand() % 10 + 1);
+        }
+        int egz = rand() % 10 + 1;
+
+        student.setNd(nd);
+        student.setEgz(egz);
+        student.setVid(galutinis_vid(nd, egz));
+        student.setMed(galutinis_med(nd, egz));
+
+        studentai.push_back(student);
     }
 }
 
