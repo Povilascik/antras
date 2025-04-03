@@ -253,6 +253,7 @@ void meniu(vector<Studentai> &studentai) {
                             throw invalid_argument("Neteisinga ivestis.");
                             break;
                         }
+
                         using ContainerType = vector<Studentai>;
                         if (pasirinkimas == 1) using ContainerType = std::vector<Studentai>;
                         else if (pasirinkimas == 2) using ContainerType = std::list<Studentai>;
@@ -261,6 +262,7 @@ void meniu(vector<Studentai> &studentai) {
                         ContainerType studentai;
                         ContainerType blogis;
                         ContainerType kietiakai;
+
                         cout << "pasirinkite, kuria strategija norite naudoti: \n"
                                 << "1 Strategija \n"
                                 << "2 Strategija \n"
@@ -269,7 +271,7 @@ void meniu(vector<Studentai> &studentai) {
                         cin >> strategija;
                         if (cin.fail() || strategija < 1 || strategija > 3) {
                             throw invalid_argument("Neteisinga ivestis.");
-                            break;
+
                         }
 
                         cout << "Pasirinkite kuri faila norite nuskaityti: \n"
@@ -540,15 +542,20 @@ void make_file(vector<duomenys> &studentai, const string &filename, int mok_sk, 
     write_file(filename, studentai, paz_sk);
 }
 
-void generuoti_paz(duomenys &studentai, int paz_sk) {
+void generuoti_paz(Studentai &student, int paz_sk) {
     while (paz_sk < 2) paz_sk = rand() % 10 + 1;
-    // tikrina ar pazymiu skaicius yra didesnis nei 2, nes buna negerai, jei <2
+    vector<int> nd;
     for (int i = 0; i < paz_sk; i++) {
-        int paz = rand() % 10 + 1; // generuoja atsisitkinius skaicius nuo 1 iki 10
-        studentai.nd.push_back(paz);
+        int paz = rand() % 10 + 1;
+        nd.push_back(paz);
     }
-    studentai.egz = studentai.nd.back();
-    studentai.nd.pop_back();
+    int egz = nd.back();
+    nd.pop_back();
+
+    student.setNd(nd);
+    student.setEgz(egz);
+    student.setVid(galutinis_vid(nd, egz));
+    student.setMed(galutinis_med(nd, egz));
 }
 
 void generuoti_paz_ranka(vector<duomenys> &studentai) {
