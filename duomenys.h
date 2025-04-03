@@ -61,8 +61,9 @@ public:
     // Setters
     void setVardas(const string &v);
     void setPavarde(const string &p);
-    void setNd(const int &n);
-    void setEgz();
+    void setNd(const vector<int> &n);
+    void addNd(int n);
+    void setEgz(int e);
     void setVid(double v);
     void setMed(double m);
     void setReserveNd(int n);
@@ -73,50 +74,29 @@ public:
 
 //////////////////////////////////////////////////////////
 
-struct duomenys {
-    // apsirasoma struktura duomenims saugoti.
-    string vardas, pavarde;
-    vector<int> nd;
-    int egz;
-    double vid, med;
-};
 
-struct blogi {
-    // apsirasoma struktura duomenims saugoti.
-    string vardas, pavarde;
-    vector<int> nd;
-    int egz;
-    double vid, med;
-};
-
-void meniu(vector<duomenys > &studentai);
+void meniu(vector<Studentai> &studentai);
 
 double galutinis_vid(vector<int> nd, int egz);
 
-void galutinis_vid(vector<int> nd, int egz, vector<duomenys> &studentai);
-
 double galutinis_med(vector<int> nd, int egz);
 
-void galutinis_med(vector<int> nd, int egz, vector<duomenys> &studentai);
+void read(const string &filename, vector<Studentai> &studentai);
 
-void read(const string &filename, vector<duomenys> &studentai);
+void ss_write(const string &filename, vector<Studentai> &studentai);
 
-void ss_write(const string &filename, vector<duomenys> &studentai);
+void write(vector<Studentai> &studentai);
 
-void write(vector<duomenys> &studentai);
+void write_file(const std::string &filename, std::vector<Studentai> &studentai, int nd_skaicius);
 
-void write_file(const std::string &filename, std::vector<duomenys> &studentai, int nd_skaicius);
+void make_file(vector<Studentai>& studentai, const string& filename, int mok_sk, int paz_sk);
 
-void make_file(vector <duomenys>& studentai,const string& filename, int mok_sk, int paz_sk);
+void generuoti_paz(Studentai &student, int paz_sk);
 
-void generuoti_paz(duomenys &student, int paz_sk);
+void generuoti_paz_ranka(vector<Studentai> &studentai);
 
-void generuoti_paz_ranka(vector<duomenys> &studentai);
+void generuoti_vard(vector<Studentai> &studentai, int paz_sk1, int mok_sk);
 
-void generuoti_vard(vector<duomenys> &studentai, int paz_sk1, int mok_sk);
-
-void sortas(vector<duomenys> &studentai);
-
-//void dalina(vector<duomenys> &studentai);
+void sortas(vector<Studentai> &studentai);
 
 #endif //DUOMENYS_H

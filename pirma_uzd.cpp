@@ -1,7 +1,7 @@
 #include "duomenys.h"               // skirtas atsidarant per editoriu
 // #include "duomenys.cpp"          // skirtas atsidarant per terminala
 
-vector<duomenys> studentai;
+vector<Studentai> studentai;
 
 int main() {
     srand(time(nullptr));

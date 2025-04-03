@@ -3,7 +3,6 @@
 
 std::unordered_map<int, string> umap;
 
-vector<duomenys> blogis;
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 // Getters
@@ -17,11 +16,9 @@ double Studentai::getMed() const { return med; }
 // Setters
 void Studentai::setVardas(const string &v) { vardas = v; }
 void Studentai::setPavarde(const string &p) { pavarde = p; }
-void Studentai::setNd(const int &n) { nd.push_back(n); }
-void Studentai::setEgz() {
-    egz = nd.back();
-    nd.pop_back();
-}
+void Studentai::setNd(const vector<int> &n) { nd = n; }
+void Studentai::addNd(int n) { nd.push_back(n); }
+void Studentai::setEgz(int e) { egz = e; }
 void Studentai::setVid(double v) { vid = v; }
 void Studentai::setMed(double m) { med = m; }
 void Studentai::setReserveNd(int n) { nd.reserve(n); }
@@ -31,44 +28,44 @@ void Studentai::setReserveNd(int n) { nd.reserve(n); }
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 template<typename Container>
 void readas(const string &filename, Container &studentai) {
-
     ifstream in(filename);
     string line;
     getline(in, line); // Skip header
     studentai.reserve(10000000);
     while (getline(in, line)) {
         stringstream iss(line);
-        duomenys student;
+        string vardas, pavarde;
         Studentai studentai_klase;
-        iss >> student.vardas >> student.pavarde;
-        studentai_klase.setVardas(student.vardas);
-        studentai_klase.setPavarde(student.pavarde);
+        iss >> vardas >> pavarde;
+        studentai_klase.setVardas(vardas);
+        studentai_klase.setPavarde(pavarde);
+
+        vector<int> nd;
         int paz;
-        studentai_klase.setReserveNd(6);
         while (iss >> paz) {
-            if (paz >= 0 && paz <= 10) studentai_klase.setNd(paz);
+            if (paz >= 0 && paz <= 10) nd.push_back(paz);
         }
-        studentai_klase.setEgz();
+
+        studentai_klase.setNd(vector<int>(nd.begin(), nd.end() - 1));
+        studentai_klase.setEgz(nd.back());
+        studentai_klase.setVid(galutinis_vid(studentai_klase.getNd(), studentai_klase.getEgz()));
+        studentai_klase.setMed(galutinis_med(studentai_klase.getNd(), studentai_klase.getEgz()));
+
+        studentai.push_back(move(studentai_klase));
     }
     cout << "read- baigta\n";
     in.close();
-    Studentai studentai_klase;
-    for (auto &student : studentai) {
-        studentai_klase.setVid(galutinis_vid(studentai_klase.getNd(), studentai_klase.getEgz()));
-        studentai_klase.setMed(galutinis_med(studentai_klase.getNd(), studentai_klase.getEgz()));
-    }
-    cout << "vid. suskaicuotas\n";
 }
 
 template<typename Container>
 double dalina(Container &studentai, Container &blogis) {
     auto start = chrono::high_resolution_clock::now();
-    stable_sort(studentai.begin(), studentai.end(), [](const duomenys &a, const duomenys &b) {
-        return a.vid < b.vid;
+    stable_sort(studentai.begin(), studentai.end(), [](const Studentai &a, const Studentai &b) {
+        return a.getVid() < b.getVid();
     });
     auto end = chrono::high_resolution_clock::now();
-    auto it = find_if(studentai.begin(), studentai.end(), [](const duomenys &student) {
-        return student.vid >= 5;
+    auto it = find_if(studentai.begin(), studentai.end(), [](const Studentai &student) {
+        return student.getVid() >= 5;
     });
 
     blogis.insert(blogis.end(), make_move_iterator(studentai.begin()), make_move_iterator(it));
@@ -80,11 +77,10 @@ double dalina(Container &studentai, Container &blogis) {
 template<typename Container>
 void sortass(Container &studentai) {
     cout << "Pasirinkite pagal ka norite rusiuoti studentus: \n"
-            << "1. Pagal varda \n"
-            << "2. Pagal pavarde \n"
-            << "3. Pagal galutini bala (vidurkis) \n"
-            << "4. Pagal galutini bala (mediana) \n";
-    // auto start = chrono::high_resolution_clock::now();
+         << "1. Pagal varda \n"
+         << "2. Pagal pavarde \n"
+         << "3. Pagal galutini bala (vidurkis) \n"
+         << "4. Pagal galutini bala (mediana) \n";
     try {
         int pasirinkimas;
         cin >> pasirinkimas;
@@ -94,33 +90,29 @@ void sortass(Container &studentai) {
 
         switch (pasirinkimas) {
             case 1:
-                stable_sort(studentai.begin(), studentai.end(), [](const duomenys &a, const duomenys &b) {
-                    return a.vardas < b.vardas;
+                stable_sort(studentai.begin(), studentai.end(), [](const Studentai &a, const Studentai &b) {
+                    return a.getVardas() < b.getVardas();
                 });
-                break;
+            break;
             case 2:
-                stable_sort(studentai.begin(), studentai.end(), [](const duomenys &a, const duomenys &b) {
-                    return a.pavarde < b.pavarde;
+                stable_sort(studentai.begin(), studentai.end(), [](const Studentai &a, const Studentai &b) {
+                    return a.getPavarde() < b.getPavarde();
                 });
-                break;
+            break;
             case 3:
-                stable_sort(studentai.begin(), studentai.end(), [](const duomenys &a, const duomenys &b) {
-                    return a.vid > b.vid;
+                stable_sort(studentai.begin(), studentai.end(), [](const Studentai &a, const Studentai &b) {
+                    return a.getVid() > b.getVid();
                 });
-                break;
+            break;
             case 4:
-                stable_sort(studentai.begin(), studentai.end(), [](const duomenys &a, const duomenys &b) {
-                    return a.med > b.med
-                    ;
+                stable_sort(studentai.begin(), studentai.end(), [](const Studentai &a, const Studentai &b) {
+                    return a.getMed() > b.getMed();
                 });
-                break;
+            break;
         }
     } catch (const exception &e) {
         cout << "Klaida: " << e.what() << endl;
     }
-    // auto end = chrono::high_resolution_clock::now();
-    cout << "sortas- baigta\n";
-    // return chrono::duration<double>(end - start).count();
 }
 
 template<typename Container>
@@ -129,11 +121,10 @@ void write_to_file(const string &filename, const Container &studentai) {
     out << setw(20) << left << "Vardas" << setw(20) << left << "Pavarde" << setw(20) << left <<
             "Galutinis (Vid.) / Galutinis (Med.)" << endl;
     out << "------------------------------------------------------------" << endl;
-    Studentai studentai_klase;
     for (const auto &student: studentai) {
-        out << setw(20) << left << studentai_klase.getVardas() << " " << setw(20) << left << studentai_klase.getPavarde() << " " << setw(20) <<
-                left << fixed << setprecision(2) << studentai_klase.getVid() << setw(20) << left << fixed << setprecision(2) <<
-                studentai_klase.getVid() << "\n";
+        out << setw(20) << left << student.getVardas() << " " << setw(20) << left << student.getPavarde() << " " << setw(20) <<
+                left << fixed << setprecision(2) << student.getVid() << setw(20) << left << fixed << setprecision(2) <<
+                student.getMed() << "\n";
     }
     cout << "write - baigta\n";
     out.close();
@@ -142,13 +133,13 @@ void write_to_file(const string &filename, const Container &studentai) {
 template<typename Container>
 void split_into_two_containers(const Container& studentai, Container& vargsiukai, Container& kietiakai) {
     for (const auto& student : studentai) {
-        if (student.vid < 5) vargsiukai.push_back(student);
-         else kietiakai.push_back(student);
+        if (student.getVid() < 5) vargsiukai.push_back(student);
+        else kietiakai.push_back(student);
     }
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-void meniu(vector<duomenys> &studentai) {
+void meniu(vector<Studentai> &studentai) {
     try {
         int a;
         cout << "norint ivesti duomenis ranka, iveskite 1. \n"
@@ -174,7 +165,7 @@ void meniu(vector<duomenys> &studentai) {
             case 3:
                 generuoti_vard(studentai, 2, 0);
                 write(studentai);
-            break;
+                break;
             case 4: {
                 int pasirinkimas;
                 cout << "pasirinkite kuri faila norite nuskaityti: \n"
@@ -188,13 +179,13 @@ void meniu(vector<duomenys> &studentai) {
                 try {
                     switch (pasirinkimas) {
                         case 1:
-                            read(test_file_location+"studentai10000.txt", studentai);
+                            read(test_file_location + "studentai10000.txt", studentai);
                             break;
                         case 2:
-                            read(test_file_location+"studentai100000.txt", studentai);
+                            read(test_file_location + "studentai100000.txt", studentai);
                             break;
                         case 3:
-                            read(test_file_location+"studentai1000000.txt", studentai);
+                            read(test_file_location + "studentai1000000.txt", studentai);
                             break;
                         default:
                             cout << "Neteisingas pasirinkimas." << endl;
@@ -206,16 +197,16 @@ void meniu(vector<duomenys> &studentai) {
                     cout << "Nepavyko nuskaityti failo." << endl;
                 } else {
                     sortas(studentai);
-                    ss_write(test_file_location+"kursiokai.txt", studentai);
+                    ss_write(test_file_location + "kursiokai.txt", studentai);
                 }
                 break;
             }
             case 5: {
-                umap[1] = test_file_location+"tyrimas_studentai1000";
-                umap[2] = test_file_location+"tyrimas_studentai10000";
-                umap[3] = test_file_location+"tyrimas_studentai100000";
-                umap[4] = test_file_location+"tyrimas_studentai1000000";
-                umap[5] = test_file_location+"tyrimas_studentai10000000";
+                umap[1] = test_file_location + "tyrimas_studentai1000";
+                umap[2] = test_file_location + "tyrimas_studentai10000";
+                umap[3] = test_file_location + "tyrimas_studentai100000";
+                umap[4] = test_file_location + "tyrimas_studentai1000000";
+                umap[5] = test_file_location + "tyrimas_studentai10000000";
                 int pasirinkimas1;
                 cout << "1. sugeneruoti failus." << endl
                         << "2. tirti failus" << endl;
@@ -228,20 +219,20 @@ void meniu(vector<duomenys> &studentai) {
                 switch (pasirinkimas1) {
                     case 1: {
                         int paz_sk;
-                        cout<<"Iveskite pazymiu skaiciu: ";
-                        cin>>paz_sk;
+                        cout << "Iveskite pazymiu skaiciu: ";
+                        cin >> paz_sk;
                         if (cin.fail() || paz_sk < 2) {
                             throw invalid_argument("Neteisingas ivestis.");
                         }
                         auto start = chrono::high_resolution_clock::now();
-                        make_file(studentai, test_file_location+"tyrimas_studentai1000.txt", 1000, paz_sk);
-                        make_file(studentai, test_file_location+"tyrimas_studentai10000.txt", 10000,
+                        make_file(studentai, test_file_location + "tyrimas_studentai1000.txt", 1000, paz_sk);
+                        make_file(studentai, test_file_location + "tyrimas_studentai10000.txt", 10000,
                                   paz_sk);
-                        make_file(studentai, test_file_location+"tyrimas_studentai100000.txt", 100000,
+                        make_file(studentai, test_file_location + "tyrimas_studentai100000.txt", 100000,
                                   paz_sk);
-                        make_file(studentai, test_file_location+"tyrimas_studentai1000000.txt",
+                        make_file(studentai, test_file_location + "tyrimas_studentai1000000.txt",
                                   1000000, paz_sk);
-                        make_file(studentai, test_file_location+"tyrimas_studentai10000000.txt",
+                        make_file(studentai, test_file_location + "tyrimas_studentai10000000.txt",
                                   10000000, paz_sk);
                         auto end = chrono::high_resolution_clock::now();
                         chrono::duration<double> duration = end - start;
@@ -251,7 +242,7 @@ void meniu(vector<duomenys> &studentai) {
                     }
                     case 2: {
                         ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
-                        double sorto_laikas=0;
+                        double sorto_laikas = 0;
                         cout << "Pasirinkite konteinerio tipa: \n"
                                 << "1. std::vector \n"
                                 << "2. std::list \n"
@@ -262,10 +253,10 @@ void meniu(vector<duomenys> &studentai) {
                             throw invalid_argument("Neteisinga ivestis.");
                             break;
                         }
-                        using ContainerType = vector<duomenys>;
-                        if (pasirinkimas == 1) using ContainerType = std::vector<duomenys>;
-                        else if (pasirinkimas == 2) using ContainerType = std::list<duomenys>;
-                        else if (pasirinkimas == 3) using ContainerType = std::deque<duomenys>;
+                        using ContainerType = vector<Studentai>;
+                        if (pasirinkimas == 1) using ContainerType = std::vector<Studentai>;
+                        else if (pasirinkimas == 2) using ContainerType = std::list<Studentai>;
+                        else if (pasirinkimas == 3) using ContainerType = std::deque<Studentai>;
                         else cout << "Neteisingas pasirinkimas." << endl;
                         ContainerType studentai;
                         ContainerType blogis;
@@ -291,7 +282,7 @@ void meniu(vector<duomenys> &studentai) {
                         if (cin.fail() || pasirinkimas1 < 1 || pasirinkimas1 > 5) {
                             throw invalid_argument("Neteisingas ivestis.");
                         }
-                        if (pasirinkimas1 > 5 || pasirinkimas1 < 1 || !umap.count(pasirinkimas1)+ ".txt") {
+                        if (pasirinkimas1 > 5 || pasirinkimas1 < 1 || !umap.count(pasirinkimas1) + ".txt") {
                             throw invalid_argument("Failas " + umap[pasirinkimas1] + ".txt nerastas.");
                         }
                         auto nuskaitymas_pradzia = chrono::high_resolution_clock::now();
@@ -305,11 +296,11 @@ void meniu(vector<duomenys> &studentai) {
                                 break;
 
                             case 2: {
-                                sorto_laikas=dalina(studentai,blogis);
+                                sorto_laikas = dalina(studentai, blogis);
                                 break;
                             }
                             case 3: {
-                                sorto_laikas=dalina(studentai,blogis);
+                                sorto_laikas = dalina(studentai, blogis);
                                 break;
                             }
                             default: {
@@ -365,11 +356,12 @@ void meniu(vector<duomenys> &studentai) {
 
                         cout << "\n Nuskaitymo laikas: " << chrono::duration<double>(
                             nuskaitymas_pabaiga - nuskaitymas_pradzia).count() << "s" << endl;
-                        cout << "\n rusiavimo didejimo tvarka laikas: "  << sorto_laikas << "s" << endl;
+                        cout << "\n rusiavimo didejimo tvarka laikas: " << sorto_laikas << "s" << endl;
                         cout << "\n dalinimo laikas: " << chrono::duration<double>(
                             dalinimo_pabaiga - dalinimo_pradzia).count() << "s" << endl;
                         cout << "\n Is viso laiko: " << chrono::duration<double>(
-                            nuskaitymas_pabaiga - nuskaitymas_pradzia).count() + sorto_laikas + chrono::duration<double>(
+                            nuskaitymas_pabaiga - nuskaitymas_pradzia).count() + sorto_laikas + chrono::duration<
+                            double>(
                             dalinimo_pabaiga - dalinimo_pradzia).count() << "s" << endl;
                         break;
                     }
@@ -452,42 +444,48 @@ double galutinis_med(vector<int> nd, int egz) {
     return 0.4 * med + 0.6 * egz;
 }
 
-void read(const string &filename, vector<duomenys> &studentai) {
+void read(const string &filename, vector<Studentai> &studentai) {
     ifstream in(filename); // atidarymas is failo
     string line;
     getline(in, line);
     while (getline(in, line)) {
-        //ciklas veikia tol, kol nuskaito visa faila
-        stringstream iss(line); //iss - string stream, skirtas nuskaityti duomenims is failo
-        duomenys student;
-        iss >> student.vardas >> student.pavarde;
+        stringstream iss(line);
+        Studentai student;
+        string vardas, pavarde;
+        iss >> vardas >> pavarde;
+        student.setVardas(vardas);
+        student.setPavarde(pavarde);
+
+
+        vector<int> nd;
         int paz;
         while (iss >> paz) {
-            if (paz >= 0 && paz <= 10) student.nd.push_back(paz);
-            //tikrina ar pazymys yra tarp 0 ir 10, o jeigu ne - praleidzia.
+            if (paz >= 0 && paz <= 10) nd.push_back(paz);
         }
 
-        student.egz = student.nd.back(); //egzamino pazymi gauna is paskutinio n.d. pazymio
-        student.nd.pop_back(); //istrina egzamino pazymi is n.d. pazymiu vektoriaus
-        studentai.push_back(student); //ideda studento duomenis i bendra vektoriu
+        int egz = nd.back();
+        nd.pop_back();
+
+        student.setNd(nd);
+        student.setEgz(egz);
+        student.setVid(galutinis_vid(nd, egz));
+        student.setMed(galutinis_med(nd, egz));
+
+        studentai.push_back(student);
     }
     in.close(); //uzdaromas failas
-    for (int i = 0; i < studentai.size(); i++) {
-        studentai[i].vid = galutinis_vid(studentai[i].nd, studentai[i].egz);
-        studentai[i].med = galutinis_med(studentai[i].nd, studentai[i].egz);
-    }
 }
 
-void ss_write(const string &filename, vector<duomenys> &studentai) {
+void ss_write(const string &filename, vector<Studentai> &studentai) {
     ofstream out(filename);
     stringstream ss;
     ss << setw(20) << left << "Vardas" << setw(20) << left << "Pavarde" << setw(20) << left <<
             "Galutinis (Vid.) / Galutinis (Med.)" << endl;
     ss << "------------------------------------------------------------" << endl;
-    for (int i = 0; i < studentai.size(); i++) {
-        ss << setw(20) << left << studentai[i].vardas << setw(20) << left << studentai[i].pavarde << setw(20) <<
-                left << fixed << setprecision(2) << studentai[i].vid << setw(20) <<
-                left << fixed << setprecision(2) << studentai[i].med << endl;
+    for (const auto& student : studentai) {
+        ss << setw(20) << left << student.getVardas() << setw(20) << left << student.getPavarde() << setw(20) <<
+                left << fixed << setprecision(2) << student.getVid() << setw(20) <<
+                left << fixed << setprecision(2) << student.getMed() << endl;
     }
     out << ss.str();
     out.close();
@@ -549,7 +547,7 @@ void generuoti_paz(duomenys &studentai, int paz_sk) {
         int paz = rand() % 10 + 1; // generuoja atsisitkinius skaicius nuo 1 iki 10
         studentai.nd.push_back(paz);
     }
-    studentai.egz=studentai.nd.back();
+    studentai.egz = studentai.nd.back();
     studentai.nd.pop_back();
 }
 
@@ -587,9 +585,9 @@ void generuoti_vard(vector<duomenys> &studentai, int paz_sk1, int mok_sk) {
 
     for (int i = 0; i < vard_sk; i++) {
         Studentai studentai_klase;
-        studentai_klase.setVardas(to_string(rand()% 26 + 65) + ".");  // generuoja atsitiktini iniciala vardui
+        studentai_klase.setVardas(to_string(rand() % 26 + 65) + "."); // generuoja atsitiktini iniciala vardui
         //studentai_klase.setVardas(".");
-        studentai_klase.setPavarde(to_string(rand() % 26 + 65)+ ".") ; // generuoja atsitiktini iniciala pavardei
+        studentai_klase.setPavarde(to_string(rand() % 26 + 65) + "."); // generuoja atsitiktini iniciala pavardei
         //studentai_klase.setPavarde(".");
         duomenys student;
         generuoti_paz(student, paz_sk); // generuoja pazymius
