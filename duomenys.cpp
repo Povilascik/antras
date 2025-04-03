@@ -385,17 +385,17 @@ void meniu(vector<Studentai> &studentai) {
     }
 }
 
-void galutinis_vid(vector<int> nd, int egz, vector<duomenys> &studentai) {
-    // skaiciuoja galutini bala pagal vidurki
-    duomenys student;
+void galutinis_vid(vector<int> nd, int egz, vector<Studentai> &studentai) {
+    // Calculate final grade using average
+    Studentai student;
     double vid = 0;
     try {
         for (int i = 0; i < nd.size(); i++) {
             vid += nd[i];
         }
-        vid /= nd.size();
+        vid = nd.empty() ? 0 : vid / nd.size();
 
-        student.vid = 0.4 * vid + 0.6 * egz;
+        student.setVid(0.4 * vid + 0.6 * egz);
         studentai.push_back(student);
     } catch (const exception &e) {
         cerr << "Error calculating average: " << e.what() << endl;
@@ -416,9 +416,9 @@ double galutinis_vid(vector<int> nd, int egz) {
     return 0.4 * vid + 0.6 * egz;
 }
 
-void galutinis_med(vector<int> nd, int egz, vector<duomenys> &studentai) {
-    // skaiciuoja galutini bala pagal mediana
-    duomenys student;
+void galutinis_med(vector<int> nd, int egz, vector<Studentai> &studentai) {
+    // Calculate final grade using median
+    Studentai student;
     sort(nd.begin(), nd.end());
     double med;
     if (nd.size() == 0) {
@@ -428,7 +428,7 @@ void galutinis_med(vector<int> nd, int egz, vector<duomenys> &studentai) {
     } else {
         med = nd[nd.size() / 2];
     }
-    student.med = 0.4 * med + 0.6 * egz;
+    student.setMed(0.4 * med + 0.6 * egz);
     studentai.push_back(student);
 }
 
@@ -493,21 +493,19 @@ void ss_write(const string &filename, vector<Studentai> &studentai) {
     out.close();
 }
 
-void write(vector<duomenys> &studentai) {
-    //isvedimo funkcija
+void write(vector<Studentai> &studentai) {
+    // Output function
     cout << setw(20) << left << "Vardas" << setw(20) << left << "Pavarde" << setw(20) << left <<
             "Galutinis (Vid.) / Galutinis (Med.)" << endl;
     cout << "------------------------------------------------------------" << endl;
     for (int i = 0; i < studentai.size(); i++) {
-        cout << setw(20) << left << studentai[i].vardas << setw(20) << left << studentai[i].pavarde << setw(20) <<
-                left
-                << fixed << setprecision(2) << galutinis_vid(studentai[i].nd, studentai[i].egz) << setw(20) << left
-                <<
-                fixed << setprecision(2) << galutinis_med(studentai[i].nd, studentai[i].egz) << endl;
+        cout << setw(20) << left << studentai[i].getVardas() << setw(20) << left << studentai[i].getPavarde() << setw(20) <<
+                left << fixed << setprecision(2) << studentai[i].getVid() << setw(20) << left <<
+                fixed << setprecision(2) << studentai[i].getMed() << endl;
     }
 }
 
-void write_file(const string &filename, vector<duomenys> &studentai, int nd_skaicius) {
+void write_file(const string &filename, vector<Studentai> &studentai, int nd_skaicius) {
     ofstream out(filename);
     if (!out) {
         throw runtime_error("negalima atidaryti failo: " + filename);
@@ -519,15 +517,13 @@ void write_file(const string &filename, vector<duomenys> &studentai, int nd_skai
     }
     ss << setw(20) << left << "EGZAMINAS" << endl;
     while (!studentai.empty()) {
-        // int lines_to_write = min(1000, static_cast<int>(studentai.size()));
-        for (auto i: studentai) {
-            ss << setw(20) << left << i.vardas
-                    << setw(20) << left << i.pavarde;
-            for (auto k: i.nd) {
-                // ss << i.nd.size() << " -size ";
+        for (auto& i : studentai) {
+            ss << setw(20) << left << i.getVardas()
+                    << setw(20) << left << i.getPavarde();
+            for (auto k : i.getNd()) {
                 ss << setw(20) << left << k;
             }
-            ss << setw(20) << left << i.egz;
+            ss << setw(20) << left << i.getEgz();
             ss << endl;
         }
         out << ss.str();
@@ -601,7 +597,7 @@ void generuoti_vard(vector<duomenys> &studentai, int paz_sk1, int mok_sk) {
     }
 }
 
-void sortas(vector<duomenys> &studentai) {
+void sortas(vector<Studentai> &studentai) {
     cout << "Pasirinkite pagal ka norite rusiuoti studentus: \n"
             << "1. Pagal varda \n"
             << "2. Pagal pavarde \n"
@@ -616,25 +612,25 @@ void sortas(vector<duomenys> &studentai) {
 
         switch (pasirinkimas) {
             case 1:
-                sort(studentai.begin(), studentai.end(), [](const duomenys &a, const duomenys &b) {
-                    return a.vardas < b.vardas;
+                sort(studentai.begin(), studentai.end(), [](const Studentai &a, const Studentai &b) {
+                    return a.getVardas() < b.getVardas();
                 });
-                break;
+            break;
             case 2:
-                sort(studentai.begin(), studentai.end(), [](const duomenys &a, const duomenys &b) {
-                    return a.pavarde < b.pavarde;
+                sort(studentai.begin(), studentai.end(), [](const Studentai &a, const Studentai &b) {
+                    return a.getPavarde() < b.getPavarde();
                 });
-                break;
+            break;
             case 3:
-                sort(studentai.begin(), studentai.end(), [](const duomenys &a, const duomenys &b) {
-                    return a.vid > b.vid;
+                sort(studentai.begin(), studentai.end(), [](const Studentai &a, const Studentai &b) {
+                    return a.getVid() > b.getVid();
                 });
-                break;
+            break;
             case 4:
-                sort(studentai.begin(), studentai.end(), [](const duomenys &a, const duomenys &b) {
-                    return a.med > b.med;
+                sort(studentai.begin(), studentai.end(), [](const Studentai &a, const Studentai &b) {
+                    return a.getMed() > b.getMed();
                 });
-                break;
+            break;
         }
     } catch (const exception &e) {
         cout << "Klaida: " << e.what() << endl;
