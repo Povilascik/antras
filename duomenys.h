@@ -47,6 +47,9 @@ private:
     double med;
 
 public:
+
+    Studentai() : egz(0), vid(0), med(0) {}
+
     // Getters
     string getVardas() const;
     string getPavarde() const;

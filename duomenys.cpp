@@ -31,13 +31,14 @@ void Studentai::setReserveNd(int n) { nd.reserve(n); }
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 template<typename Container>
 void readas(const string &filename, Container &studentai) {
-    duomenys student;
+
     ifstream in(filename);
     string line;
     getline(in, line); // Skip header
     studentai.reserve(10000000);
     while (getline(in, line)) {
         stringstream iss(line);
+        duomenys student;
         Studentai studentai_klase;
         iss >> student.vardas >> student.pavarde;
         studentai_klase.setVardas(student.vardas);
@@ -48,14 +49,13 @@ void readas(const string &filename, Container &studentai) {
             if (paz >= 0 && paz <= 10) studentai_klase.setNd(paz);
         }
         studentai_klase.setEgz();
-        studentai.push_back(move(student));
     }
     cout << "read- baigta\n";
     in.close();
-
+    Studentai studentai_klase;
     for (auto &student : studentai) {
-        studentai.setVid(galutinis_vid(student.nd, student.egz));
-        studentai.setMed(galutinis_med(student.nd, student.egz));
+        studentai_klase.setVid(galutinis_vid(studentai_klase.getNd(), studentai_klase.getEgz()));
+        studentai_klase.setMed(galutinis_med(studentai_klase.getNd(), studentai_klase.getEgz()));
     }
     cout << "vid. suskaicuotas\n";
 }
@@ -63,12 +63,12 @@ void readas(const string &filename, Container &studentai) {
 template<typename Container>
 double dalina(Container &studentai, Container &blogis) {
     auto start = chrono::high_resolution_clock::now();
-    stable_sort(studentai.begin(), studentai.end(), [](const Studentai &a, const Studentai &b) {
-        return a.getVid() < b.getVid();
+    stable_sort(studentai.begin(), studentai.end(), [](const duomenys &a, const duomenys &b) {
+        return a.vid < b.vid;
     });
     auto end = chrono::high_resolution_clock::now();
-    auto it = find_if(studentai.begin(), studentai.end(), [](const Studentai &student) {
-        return student.getVid() >= 5;
+    auto it = find_if(studentai.begin(), studentai.end(), [](const duomenys &student) {
+        return student.vid >= 5;
     });
 
     blogis.insert(blogis.end(), make_move_iterator(studentai.begin()), make_move_iterator(it));
@@ -94,23 +94,24 @@ void sortass(Container &studentai) {
 
         switch (pasirinkimas) {
             case 1:
-                stable_sort(studentai.begin(), studentai.end(), [](const Studentai &a, const Studentai &b) {
-                    return a.getVardas() < b.getVardas();
+                stable_sort(studentai.begin(), studentai.end(), [](const duomenys &a, const duomenys &b) {
+                    return a.vardas < b.vardas;
                 });
                 break;
             case 2:
-                stable_sort(studentai.begin(), studentai.end(), [](const Studentai &a, const Studentai &b) {
-                    return a.getPavarde() < b.getPavarde();
+                stable_sort(studentai.begin(), studentai.end(), [](const duomenys &a, const duomenys &b) {
+                    return a.pavarde < b.pavarde;
                 });
                 break;
             case 3:
-                stable_sort(studentai.begin(), studentai.end(), [](const Studentai &a, const Studentai &b) {
-                    return a.getVid() > b.getVid();
+                stable_sort(studentai.begin(), studentai.end(), [](const duomenys &a, const duomenys &b) {
+                    return a.vid > b.vid;
                 });
                 break;
             case 4:
-                stable_sort(studentai.begin(), studentai.end(), [](const Studentai &a, const Studentai &b) {
-                    return a.getMed() > b.getMed();
+                stable_sort(studentai.begin(), studentai.end(), [](const duomenys &a, const duomenys &b) {
+                    return a.med > b.med
+                    ;
                 });
                 break;
         }
@@ -128,10 +129,11 @@ void write_to_file(const string &filename, const Container &studentai) {
     out << setw(20) << left << "Vardas" << setw(20) << left << "Pavarde" << setw(20) << left <<
             "Galutinis (Vid.) / Galutinis (Med.)" << endl;
     out << "------------------------------------------------------------" << endl;
+    Studentai studentai_klase;
     for (const auto &student: studentai) {
-        out << setw(20) << left << student.getVardas() << " " << setw(20) << left << student.getPavarde() << " " << setw(20) <<
-                left << fixed << setprecision(2) << student.getVid() << setw(20) << left << fixed << setprecision(2) <<
-                student.getVid() << "\n";
+        out << setw(20) << left << studentai_klase.getVardas() << " " << setw(20) << left << studentai_klase.getPavarde() << " " << setw(20) <<
+                left << fixed << setprecision(2) << studentai_klase.getVid() << setw(20) << left << fixed << setprecision(2) <<
+                studentai_klase.getVid() << "\n";
     }
     cout << "write - baigta\n";
     out.close();
@@ -540,15 +542,15 @@ void make_file(vector<duomenys> &studentai, const string &filename, int mok_sk, 
     write_file(filename, studentai, paz_sk);
 }
 
-void generuoti_paz(duomenys &student, int paz_sk) {
+void generuoti_paz(duomenys &studentai, int paz_sk) {
     while (paz_sk < 2) paz_sk = rand() % 10 + 1;
     // tikrina ar pazymiu skaicius yra didesnis nei 2, nes buna negerai, jei <2
     for (int i = 0; i < paz_sk; i++) {
         int paz = rand() % 10 + 1; // generuoja atsisitkinius skaicius nuo 1 iki 10
-        student.nd.push_back(paz);
+        studentai.nd.push_back(paz);
     }
-    student.egz = student.nd.back(); //egzamino pazymi gauna is paskutinio n.d. pazymio
-    student.nd.pop_back(); //istrina egzamino pazymi is n.d. pazymiu vektoriaus
+    studentai.egz=studentai.nd.back();
+    studentai.nd.pop_back();
 }
 
 void generuoti_paz_ranka(vector<duomenys> &studentai) {
@@ -578,17 +580,19 @@ void generuoti_vard(vector<duomenys> &studentai, int paz_sk1, int mok_sk) {
     int vard_sk;
     if (mok_sk != 0) vard_sk = mok_sk;
     else vard_sk = rand() % 100 + 1; // sugeneruoja atsitiktini skaiciu, kuris rodo kiek bus zmoniu
+
     int paz_sk;
     if (paz_sk1 != 0) paz_sk = paz_sk1;
     else paz_sk = rand() % 10 + 1; // sugeneruoja atsitiktini pazymiu skaiciu
+
     for (int i = 0; i < vard_sk; i++) {
+        Studentai studentai_klase;
+        studentai_klase.setVardas(to_string(rand()% 26 + 65) + ".");  // generuoja atsitiktini iniciala vardui
+        //studentai_klase.setVardas(".");
+        studentai_klase.setPavarde(to_string(rand() % 26 + 65)+ ".") ; // generuoja atsitiktini iniciala pavardei
+        //studentai_klase.setPavarde(".");
         duomenys student;
-        student.vardas = rand() % 26 + 65; // generuoja atsitiktini iniciala vardui
-        student.vardas += ".";
-        student.pavarde = rand() % 26 + 65; // generuoja atsitiktini iniciala pavardei
-        student.pavarde += ".";
         generuoti_paz(student, paz_sk); // generuoja pazymius
-        studentai.push_back(student); // ideda studento duomenis i bendra vektoriu
     }
 }
 
