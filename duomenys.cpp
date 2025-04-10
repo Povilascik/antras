@@ -90,10 +90,11 @@ void readas(const string &filename, Container &studentai) {
     while (getline(in, line)) {
         stringstream iss(line);
         string vardas, pavarde;
+        Studentai studentai_temp;
         Studentai studentai_klase;
         iss >> vardas >> pavarde;
-        studentai_klase.setVardas(vardas);
-        studentai_klase.setPavarde(pavarde);
+        studentai_temp.setVardas(vardas);
+        studentai_temp.setPavarde(pavarde);
 
         vector<int> nd;
         int paz;
@@ -101,11 +102,12 @@ void readas(const string &filename, Container &studentai) {
             if (paz >= 0 && paz <= 10) nd.push_back(paz);
         }
 
-        studentai_klase.setNd(vector<int>(nd.begin(), nd.end() - 1));
-        studentai_klase.setEgz(nd.back());
-        studentai_klase.setVid(galutinis_vid(studentai_klase.getNd(), studentai_klase.getEgz()));
-        studentai_klase.setMed(galutinis_med(studentai_klase.getNd(), studentai_klase.getEgz()));
+        studentai_temp.setNd(vector<int>(nd.begin(), nd.end() - 1));
+        studentai_temp.setEgz(nd.back());
+        studentai_temp.setVid(galutinis_vid(studentai_temp.getNd(), studentai_temp.getEgz()));
+        studentai_temp.setMed(galutinis_med(studentai_temp.getNd(), studentai_temp.getEgz()));
 
+        studentai_klase = move(studentai_temp);
         studentai.push_back(move(studentai_klase));
     }
     cout << "read- baigta\n";
@@ -187,10 +189,19 @@ void write_to_file(const string &filename, const Container &studentai) {
 
 template<typename Container>
 void split_into_two_containers(const Container& studentai, Container& vargsiukai, Container& kietiakai) {
-    for (const auto& student : studentai) {
-        if (student.getVid() < 5) vargsiukai.push_back(student);
-        else kietiakai.push_back(student);
+     for (auto it = studentai.begin(); it != studentai.end(); ++it) {
+        if (it->getVid() < 5) {
+            Studentai temp;
+            temp=move(*it);
+            vargsiukai.push_back(move(temp));
+        }
+        else {
+            Studentai temp;
+            temp=move(*it);
+            kietiakai.push_back(move(temp));
+        }
     }
+    studentai.clear();
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -528,7 +539,7 @@ void read(const string &filename, vector<Studentai> &studentai) {
         student.setVid(galutinis_vid(nd, egz));
         student.setMed(galutinis_med(nd, egz));
 
-        studentai.push_back(student);
+        studentai.push_back(move(student));
     }
     in.close(); //uzdaromas failas
 }
@@ -629,7 +640,7 @@ void generuoti_paz_ranka(vector<Studentai> &studentai) {
 
             int paz_sk = rand() % 10 + 1;
             generuoti_paz(student, paz_sk);
-            studentai.push_back(student);
+            studentai.push_back(move(student));
         } catch (const exception &e) {
             cout << "Klaida: " << e.what() << endl;
             cin.clear();
@@ -665,7 +676,7 @@ void generuoti_vard(vector<Studentai> &studentai, int paz_sk1, int mok_sk) {
         student.setVid(galutinis_vid(nd, egz));
         student.setMed(galutinis_med(nd, egz));
 
-        studentai.push_back(student);
+        studentai.push_back(move(student));
     }
 }
 
