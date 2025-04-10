@@ -47,6 +47,37 @@ Studentai& Studentai::operator=(const Studentai& other) {
     }
     return *this;
 }
+
+// Move constructor
+Studentai::Studentai(Studentai&& other) noexcept :
+    vardas(move(other.vardas)),
+    pavarde(move(other.pavarde)),
+    nd(move(other.nd)),
+    egz(other.egz),
+    vid(other.vid),
+    med(other.med) {
+    // atstato reiksmes
+    other.egz = 0;
+    other.vid = 0;
+    other.med = 0;
+}
+
+// Move assignment operator
+Studentai& Studentai::operator=(Studentai&& other) noexcept {
+    if (this != &other) {
+        vardas = move(other.vardas);
+        pavarde = move(other.pavarde);
+        nd = move(other.nd);
+        egz = other.egz;
+        vid = other.vid;
+        med = other.med;
+        // atstato reiksmes
+        other.egz = 0;
+        other.vid = 0;
+        other.med = 0;
+    }
+    return *this;
+}
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
