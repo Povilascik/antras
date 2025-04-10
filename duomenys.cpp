@@ -78,6 +78,15 @@ Studentai& Studentai::operator=(Studentai&& other) noexcept {
     }
     return *this;
 }
+
+// Output operator
+std::ostream& operator<<(std::ostream& os, const Studentai& student) {
+    os << setw(20) << left << student.vardas
+       << setw(20) << left << student.pavarde
+       << setw(20) << left << fixed << setprecision(2) << student.vid
+       << setw(20) << left << fixed << setprecision(2) << student.med;
+    return os;
+}
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -188,7 +197,7 @@ void write_to_file(const string &filename, const Container &studentai) {
 }
 
 template<typename Container>
-void split_into_two_containers(const Container& studentai, Container& vargsiukai, Container& kietiakai) {
+void split_into_two_containers(Container& studentai, Container& vargsiukai, Container& kietiakai) {
      for (auto it = studentai.begin(); it != studentai.end(); ++it) {
         if (it->getVid() < 5) {
             Studentai temp;
@@ -564,10 +573,8 @@ void write(vector<Studentai> &studentai) {
     cout << setw(20) << left << "Vardas" << setw(20) << left << "Pavarde" << setw(20) << left <<
             "Galutinis (Vid.) / Galutinis (Med.)" << endl;
     cout << "------------------------------------------------------------" << endl;
-    for (int i = 0; i < studentai.size(); i++) {
-        cout << setw(20) << left << studentai[i].getVardas() << setw(20) << left << studentai[i].getPavarde() << setw(20) <<
-                left << fixed << setprecision(2) << studentai[i].getVid() << setw(20) << left <<
-                fixed << setprecision(2) << studentai[i].getMed() << endl;
+    for (const auto& student : studentai) {
+        cout << student << endl;
     }
 }
 

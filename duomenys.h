@@ -58,6 +58,10 @@ public:
     Studentai(Studentai&& other) noexcept; // Move constructor
     Studentai& operator=(Studentai&& other) noexcept; // Move assignment
 
+    // Operators
+    friend std::ostream& operator<<(std::ostream& os, const Studentai& student);
+    friend std::istream& operator>>(std::istream& is, Studentai& student);
+
     // Getters
     string getVardas() const;
     string getPavarde() const;
