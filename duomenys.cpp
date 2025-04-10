@@ -24,8 +24,29 @@ void Studentai::setMed(double m) { med = m; }
 void Studentai::setReserveNd(int n) { nd.reserve(n); }
 
 //Destruktor
-
 Studentai::~Studentai(){}
+
+// Copy constructor
+Studentai::Studentai(const Studentai& other) :
+    vardas(other.vardas),
+    pavarde(other.pavarde),
+    nd(other.nd),
+    egz(other.egz),
+    vid(other.vid),
+    med(other.med) {}
+// Copy assignment operator
+
+Studentai& Studentai::operator=(const Studentai& other) {
+    if (this != &other) {
+        vardas = other.vardas;
+        pavarde = other.pavarde;
+        nd = other.nd;
+        egz = other.egz;
+        vid = other.vid;
+        med = other.med;
+    }
+    return *this;
+}
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

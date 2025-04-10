@@ -52,6 +52,12 @@ public:
     // Default destructor
     ~Studentai();
 
+    // Rule of Five
+    Studentai(const Studentai& other); // Copy constructor
+    Studentai& operator=(const Studentai& other); // Copy assignment
+    Studentai(Studentai&& other) noexcept; // Move constructor
+    Studentai& operator=(Studentai&& other) noexcept; // Move assignment
+
     // Getters
     string getVardas() const;
     string getPavarde() const;

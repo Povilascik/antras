@@ -1,4 +1,4 @@
-C:/Users/PC/Desktop/oop/1.0+/GitHub/pirmas/cmake-build-debug/CMakeFiles/saugojimas_masyve.dir
-C:/Users/PC/Desktop/oop/1.0+/GitHub/pirmas/cmake-build-debug/CMakeFiles/programa.dir
-C:/Users/PC/Desktop/oop/1.0+/GitHub/pirmas/cmake-build-debug/CMakeFiles/edit_cache.dir
-C:/Users/PC/Desktop/oop/1.0+/GitHub/pirmas/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+C:/Users/PC/Desktop/oop/1.0+/GitHub/antras/cmake-build-debug/CMakeFiles/saugojimas_masyve.dir
+C:/Users/PC/Desktop/oop/1.0+/GitHub/antras/cmake-build-debug/CMakeFiles/programa.dir
+C:/Users/PC/Desktop/oop/1.0+/GitHub/antras/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Users/PC/Desktop/oop/1.0+/GitHub/antras/cmake-build-debug/CMakeFiles/rebuild_cache.dir
