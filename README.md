@@ -63,6 +63,12 @@ SSD:KXG6AZNV512G TOSHIBA M.2 2280
 # V1.1 užduotis {
 Tyrimai atlikti su O1, O2, O3 optimizacijomis.
 ![img_4.png](img_4.png)
+O1 flag'o exe failo dydis - 242KB
+
+O2 flag'o exe failo dydis - 206KB
+
+O3 flag'o exe failo dydis - 204KB
+
 Palyginus rezultatus su struktūros ir klasės optimizacijomis, pastebėta, kad klasės optimizacija yra greitesnė (mazdaug 2 kartus) už struktūros optimizaciją. 
 Taip pat pastebėta, kad O3 optimizacija yra greitesnė už O2 ir O1 optimizacijas.
 
