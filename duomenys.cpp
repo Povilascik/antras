@@ -80,12 +80,52 @@ Studentai& Studentai::operator=(Studentai&& other) noexcept {
 }
 
 // Output operator
-std::ostream& operator<<(std::ostream& os, const Studentai& student) {
+ostream& operator<<(ostream& os, const Studentai& student) {
     os << setw(20) << left << student.vardas
        << setw(20) << left << student.pavarde
        << setw(20) << left << fixed << setprecision(2) << student.vid
        << setw(20) << left << fixed << setprecision(2) << student.med;
     return os;
+}
+
+// Input operator
+std::ifstream& operator>>(std::ifstream& in, Studentai& student){
+    // Check if stream is good
+    if (!in) {
+        return in;
+    }
+
+    string line;
+    try {
+        getline(in,line);
+    }catch (const std::exception &e) {
+        cerr << "Error reading line: " << e.what() << endl;
+    }
+
+    stringstream ss(line);
+
+    ss>>student.vardas >> student.pavarde;
+
+    int paz;
+    while (ss >> paz) {
+        if (paz >= 0 && paz <= 10) {
+            student.nd.push_back(paz);
+        }
+    }
+
+    if(student.nd.size()==0) {
+        cerr << "Error: No valid grades found in line: " << line << endl;
+        return in;
+    }
+
+    student.egz = student.nd.back();
+    student.nd.pop_back();
+
+
+    student.vid = galutinis_vid(student.nd, student.egz);
+    student.med = galutinis_med(student.nd, student.egz);
+
+    return in;
 }
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -93,34 +133,30 @@ std::ostream& operator<<(std::ostream& os, const Studentai& student) {
 template<typename Container>
 void readas(const string &filename, Container &studentai) {
     ifstream in(filename);
-    string line;
-    getline(in, line); // Skip header
-    studentai.reserve(10000000);
-    while (getline(in, line)) {
-        stringstream iss(line);
-        string vardas, pavarde;
-        Studentai studentai_temp;
-        Studentai studentai_klase;
-        iss >> vardas >> pavarde;
-        studentai_temp.setVardas(vardas);
-        studentai_temp.setPavarde(pavarde);
-
-        vector<int> nd;
-        int paz;
-        while (iss >> paz) {
-            if (paz >= 0 && paz <= 10) nd.push_back(paz);
+    try {
+        if (!in) {
+            throw runtime_error("Failed to open file: " + filename);
         }
-
-        studentai_temp.setNd(vector<int>(nd.begin(), nd.end() - 1));
-        studentai_temp.setEgz(nd.back());
-        studentai_temp.setVid(galutinis_vid(studentai_temp.getNd(), studentai_temp.getEgz()));
-        studentai_temp.setMed(galutinis_med(studentai_temp.getNd(), studentai_temp.getEgz()));
-
-        studentai_klase = move(studentai_temp);
-        studentai.push_back(move(studentai_klase));
+    }catch (const std::exception &e) {
+        cerr << e.what() << endl;
+        terminate();
     }
-    cout << "read- baigta\n";
+    string line;
+    getline(in, line);
+    Studentai student;
+    studentai.reserve(1000000);
+    try {
+        while (!in.eof()) {
+            if (in >> student) {
+                studentai.push_back(std::move(student));
+            }
+        }
+    }catch (const std::exception &e) {
+        cerr << "Error reading line: " << e.what() << endl;
+    }
     in.close();
+    cout << "read- baigta\n";
+    cout << "Studentu skaicius: " << studentai.size() << endl;
 }
 
 template<typename Container>
@@ -188,9 +224,7 @@ void write_to_file(const string &filename, const Container &studentai) {
             "Galutinis (Vid.) / Galutinis (Med.)" << endl;
     out << "------------------------------------------------------------" << endl;
     for (const auto &student: studentai) {
-        out << setw(20) << left << student.getVardas() << " " << setw(20) << left << student.getPavarde() << " " << setw(20) <<
-                left << fixed << setprecision(2) << student.getVid() << setw(20) << left << fixed << setprecision(2) <<
-                student.getMed() << "\n";
+        out << student << "\n";
     }
     cout << "write - baigta\n";
     out.close();
@@ -555,21 +589,25 @@ void read(const string &filename, vector<Studentai> &studentai) {
 
 void ss_write(const string &filename, vector<Studentai> &studentai) {
     ofstream out(filename);
+    if (!out) {
+        throw runtime_error("Failed to open file: " + filename);
+    }
+    if (studentai.empty()) {
+        cout << "No students to write to the file." << endl;
+        return;
+    }
     stringstream ss;
     ss << setw(20) << left << "Vardas" << setw(20) << left << "Pavarde" << setw(20) << left <<
             "Galutinis (Vid.) / Galutinis (Med.)" << endl;
     ss << "------------------------------------------------------------" << endl;
     for (const auto& student : studentai) {
-        ss << setw(20) << left << student.getVardas() << setw(20) << left << student.getPavarde() << setw(20) <<
-                left << fixed << setprecision(2) << student.getVid() << setw(20) <<
-                left << fixed << setprecision(2) << student.getMed() << endl;
+        ss << student << endl;
     }
     out << ss.str();
     out.close();
 }
 
 void write(vector<Studentai> &studentai) {
-    // Output function
     cout << setw(20) << left << "Vardas" << setw(20) << left << "Pavarde" << setw(20) << left <<
             "Galutinis (Vid.) / Galutinis (Med.)" << endl;
     cout << "------------------------------------------------------------" << endl;

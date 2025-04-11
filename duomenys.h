@@ -60,7 +60,7 @@ public:
 
     // Operators
     friend std::ostream& operator<<(std::ostream& os, const Studentai& student);
-    friend std::istream& operator>>(std::istream& is, Studentai& student);
+    friend std::ifstream& operator>>(std::ifstream& in, Studentai& student);
 
     // Getters
     string getVardas() const;
