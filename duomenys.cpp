@@ -29,7 +29,7 @@ Studentai::~Studentai(){
     vardas=" ";
     pavarde=" ";
     egz=0;
-    nd=0;
+    nd.clear();
     vid=0;
     med=0;
 }
