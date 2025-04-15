@@ -24,19 +24,28 @@ void Studentai::setMed(double m) { med = m; }
 void Studentai::setReserveNd(int n) { nd.reserve(n); }
 
 //Destruktor
-Studentai::~Studentai(){}
+Studentai::~Studentai() {
+    vardas = " ";
+    pavarde = " ";
+    egz = 0;
+    nd.clear();
+    vid = 0;
+    med = 0;
+}
+
 
 // Copy constructor
-Studentai::Studentai(const Studentai& other) :
+Studentai::Studentai(const Studentai &other) :
     vardas(other.vardas),
     pavarde(other.pavarde),
     nd(other.nd),
     egz(other.egz),
     vid(other.vid),
-    med(other.med) {}
-// Copy assignment operator
+    med(other.med) {
+}
 
-Studentai& Studentai::operator=(const Studentai& other) {
+// Copy assignment operator
+Studentai &Studentai::operator=(const Studentai &other) {
     if (this != &other) {
         vardas = other.vardas;
         pavarde = other.pavarde;
@@ -49,7 +58,7 @@ Studentai& Studentai::operator=(const Studentai& other) {
 }
 
 // Move constructor
-Studentai::Studentai(Studentai&& other) noexcept :
+Studentai::Studentai(Studentai &&other) noexcept :
     vardas(move(other.vardas)),
     pavarde(move(other.pavarde)),
     nd(move(other.nd)),
@@ -63,7 +72,7 @@ Studentai::Studentai(Studentai&& other) noexcept :
 }
 
 // Move assignment operator
-Studentai& Studentai::operator=(Studentai&& other) noexcept {
+Studentai &Studentai::operator=(Studentai &&other) noexcept {
     if (this != &other) {
         vardas = move(other.vardas);
         pavarde = move(other.pavarde);
@@ -80,31 +89,30 @@ Studentai& Studentai::operator=(Studentai&& other) noexcept {
 }
 
 // Output operator
-ostream& operator<<(ostream& os, const Studentai& student) {
+ostream &operator<<(ostream &os, const Studentai &student) {
     os << setw(20) << left << student.vardas
-       << setw(20) << left << student.pavarde
-       << setw(20) << left << fixed << setprecision(2) << student.vid
-       << setw(20) << left << fixed << setprecision(2) << student.med;
+            << setw(20) << left << student.pavarde
+            << setw(20) << left << fixed << setprecision(2) << student.vid
+            << setw(20) << left << fixed << setprecision(2) << student.med;
     return os;
 }
 
 // Input operator
-std::ifstream& operator>>(std::ifstream& in, Studentai& student){
-    // Check if stream is good
+std::ifstream &operator>>(std::ifstream &in, Studentai &student) {
     if (!in) {
         return in;
     }
 
     string line;
     try {
-        getline(in,line);
-    }catch (const std::exception &e) {
+        getline(in, line);
+    } catch (const std::exception &e) {
         cerr << "Error reading line: " << e.what() << endl;
     }
 
     stringstream ss(line);
 
-    ss>>student.vardas >> student.pavarde;
+    ss >> student.vardas >> student.pavarde;
 
     int paz;
     while (ss >> paz) {
@@ -113,23 +121,33 @@ std::ifstream& operator>>(std::ifstream& in, Studentai& student){
         }
     }
 
-    if(student.nd.size()==0) {
-        cerr << "Error: No valid grades found in line: " << line << endl;
+    if (student.nd.size() == 0) {
         return in;
     }
 
     student.egz = student.nd.back();
     student.nd.pop_back();
 
-
     student.vid = galutinis_vid(student.nd, student.egz);
     student.med = galutinis_med(student.nd, student.egz);
 
     return in;
 }
+
+// Equal operator
+bool operator==(const Studentai &a, const Studentai &b) {
+    return a.getVardas() == b.getVardas() &&
+           a.getPavarde() == b.getPavarde() &&
+           a.getNd() == b.getNd() &&
+           a.getEgz() == b.getEgz() &&
+           a.getVid() == b.getVid() &&
+           a.getMed() == b.getMed();
+}
+
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 template<typename Container>
 void readas(const string &filename, Container &studentai) {
     ifstream in(filename);
@@ -137,7 +155,7 @@ void readas(const string &filename, Container &studentai) {
         if (!in) {
             throw runtime_error("Failed to open file: " + filename);
         }
-    }catch (const std::exception &e) {
+    } catch (const std::exception &e) {
         cerr << e.what() << endl;
         terminate();
     }
@@ -151,7 +169,7 @@ void readas(const string &filename, Container &studentai) {
                 studentai.push_back(std::move(student));
             }
         }
-    }catch (const std::exception &e) {
+    } catch (const std::exception &e) {
         cerr << "Error reading line: " << e.what() << endl;
     }
     in.close();
@@ -179,10 +197,10 @@ double dalina(Container &studentai, Container &blogis) {
 template<typename Container>
 void sortass(Container &studentai) {
     cout << "Pasirinkite pagal ka norite rusiuoti studentus: \n"
-         << "1. Pagal varda \n"
-         << "2. Pagal pavarde \n"
-         << "3. Pagal galutini bala (vidurkis) \n"
-         << "4. Pagal galutini bala (mediana) \n";
+            << "1. Pagal varda \n"
+            << "2. Pagal pavarde \n"
+            << "3. Pagal galutini bala (vidurkis) \n"
+            << "4. Pagal galutini bala (mediana) \n";
     try {
         int pasirinkimas;
         cin >> pasirinkimas;
@@ -195,22 +213,22 @@ void sortass(Container &studentai) {
                 stable_sort(studentai.begin(), studentai.end(), [](const Studentai &a, const Studentai &b) {
                     return a.getVardas() < b.getVardas();
                 });
-            break;
+                break;
             case 2:
                 stable_sort(studentai.begin(), studentai.end(), [](const Studentai &a, const Studentai &b) {
                     return a.getPavarde() < b.getPavarde();
                 });
-            break;
+                break;
             case 3:
                 stable_sort(studentai.begin(), studentai.end(), [](const Studentai &a, const Studentai &b) {
                     return a.getVid() > b.getVid();
                 });
-            break;
+                break;
             case 4:
                 stable_sort(studentai.begin(), studentai.end(), [](const Studentai &a, const Studentai &b) {
                     return a.getMed() > b.getMed();
                 });
-            break;
+                break;
         }
     } catch (const exception &e) {
         cout << "Klaida: " << e.what() << endl;
@@ -231,16 +249,15 @@ void write_to_file(const string &filename, const Container &studentai) {
 }
 
 template<typename Container>
-void split_into_two_containers(Container& studentai, Container& vargsiukai, Container& kietiakai) {
-     for (auto it = studentai.begin(); it != studentai.end(); ++it) {
+void split_into_two_containers(Container &studentai, Container &vargsiukai, Container &kietiakai) {
+    for (auto it = studentai.begin(); it != studentai.end(); ++it) {
         if (it->getVid() < 5) {
             Studentai temp;
-            temp=move(*it);
+            temp = move(*it);
             vargsiukai.push_back(move(temp));
-        }
-        else {
+        } else {
             Studentai temp;
-            temp=move(*it);
+            temp = move(*it);
             kietiakai.push_back(move(temp));
         }
     }
@@ -248,6 +265,60 @@ void split_into_two_containers(Container& studentai, Container& vargsiukai, Cont
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+// Testavimo funkcija
+void testavimas(vector<Studentai> &studentai) {
+    cout << "Sukurti mokiniai testavimui.\n" << endl;
+    make_file(studentai, test_file_location + "test.txt", 1, 5);
+
+    cout << "Nuskaitome mokinius is failo.(naudojamas input operatorius)\n" << endl;
+    readas(test_file_location + "test.txt", studentai);
+    cout << "\nInput operator veikia!\n";
+
+    if (studentai.empty()) {
+        cout << "Nuskaitymas neveikia:(" << endl;
+        return;
+    }
+
+    // Test copy constructor
+    cout << "\nCopy constructor:" << endl;
+    Studentai copy_constructed(studentai[0]);
+    cout << "Pradinis: " << studentai[0] << endl;
+    cout << "Po copy: " << copy_constructed << endl;
+    cout << "Copy constructor " << (copy_constructed == studentai[0] ? "veikia!" : "neveikia:(") << endl;
+
+    // Test copy assignment
+    cout << "\nCopy assignment operator." << endl;
+    Studentai copy_assigned;
+    copy_assigned = studentai[0];
+    cout << "Original: " << studentai[0] << endl;
+    cout << "Po copy assigned: " << copy_assigned << endl;
+    cout << "Copy assignment " << (copy_assigned == studentai[0] ? "veikia!" : "neveikia:(") << endl;
+
+    // Test move constructor
+    cout << "\nMove constructor." << endl;
+    Studentai to_move = studentai[0];
+    Studentai move_constructed(std::move(to_move));
+    cout << "Moved to: " << move_constructed << endl;
+    cout << "Originali reiksme turi buti tuscia: "
+            << (to_move.getVardas().empty() && to_move.getNd().empty() ? "tuscia!" : "ne tuscia:(") << endl;
+
+    // Test move assignment
+    cout << "\nMove assignment operator." << endl;
+    Studentai move_source = studentai[0];
+    Studentai move_target;
+    move_target = std::move(move_source);
+    cout << "Moved to: " << move_target << endl;
+    cout << "Originali reiksme turi buti tuscia: "
+            << (move_source.getVardas().empty() && move_source.getNd().empty() ? "tuscia!" : "ne tuscia:(") << endl;
+
+    cout << "\nStudentai is failo: \n";
+    write(studentai);
+    cout << "\nOutput operator veikia!\n";
+
+    cout << "\nDestruktorius automatiskai bus iskviestas, kai visi objektai iseis is scope\n";
+}
+
 void meniu(vector<Studentai> &studentai) {
     try {
         int a;
@@ -318,7 +389,8 @@ void meniu(vector<Studentai> &studentai) {
                 umap[5] = test_file_location + "tyrimas_studentai10000000";
                 int pasirinkimas1;
                 cout << "1. sugeneruoti failus." << endl
-                        << "2. tirti failus" << endl;
+                        << "2. tirti failus" << endl
+                        << "3. testavimas" << endl;
                 try {
                     cin >> pasirinkimas1;
                 } catch (exception &e) {
@@ -376,11 +448,10 @@ void meniu(vector<Studentai> &studentai) {
                         //         << "1 Strategija \n"
                         //         << "2 Strategija \n"
                         //         << "3 Strategija \n";
-                        int strategija=2;
+                        int strategija = 2;
                         //cin >> strategija;
                         if (cin.fail() || strategija < 1 || strategija > 3) {
                             throw invalid_argument("Neteisinga ivestis.");
-
                         }
 
                         cout << "Pasirinkite kuri faila norite nuskaityti: \n"
@@ -474,6 +545,10 @@ void meniu(vector<Studentai> &studentai) {
                             nuskaitymas_pabaiga - nuskaitymas_pradzia).count() + sorto_laikas + chrono::duration<
                             double>(
                             dalinimo_pabaiga - dalinimo_pradzia).count() << "s" << endl;
+                        break;
+                    }
+                    case 3: {
+                        testavimas(studentai);
                         break;
                     }
                     default:
@@ -600,7 +675,7 @@ void ss_write(const string &filename, vector<Studentai> &studentai) {
     ss << setw(20) << left << "Vardas" << setw(20) << left << "Pavarde" << setw(20) << left <<
             "Galutinis (Vid.) / Galutinis (Med.)" << endl;
     ss << "------------------------------------------------------------" << endl;
-    for (const auto& student : studentai) {
+    for (const auto &student: studentai) {
         ss << student << endl;
     }
     out << ss.str();
@@ -611,7 +686,7 @@ void write(vector<Studentai> &studentai) {
     cout << setw(20) << left << "Vardas" << setw(20) << left << "Pavarde" << setw(20) << left <<
             "Galutinis (Vid.) / Galutinis (Med.)" << endl;
     cout << "------------------------------------------------------------" << endl;
-    for (const auto& student : studentai) {
+    for (const auto &student: studentai) {
         cout << student << endl;
     }
 }
@@ -628,10 +703,10 @@ void write_file(const string &filename, vector<Studentai> &studentai, int nd_ska
     }
     ss << setw(20) << left << "EGZAMINAS" << endl;
     while (!studentai.empty()) {
-        for (auto& i : studentai) {
+        for (auto &i: studentai) {
             ss << setw(20) << left << i.getVardas()
                     << setw(20) << left << i.getPavarde();
-            for (auto k : i.getNd()) {
+            for (auto k: i.getNd()) {
                 ss << setw(20) << left << k;
             }
             ss << setw(20) << left << i.getEgz();
@@ -644,7 +719,7 @@ void write_file(const string &filename, vector<Studentai> &studentai, int nd_ska
     out.close();
 }
 
-void make_file(vector<Studentai>& studentai, const string& filename, int mok_sk, int paz_sk) {
+void make_file(vector<Studentai> &studentai, const string &filename, int mok_sk, int paz_sk) {
     generuoti_vard(studentai, paz_sk, mok_sk);
     write_file(filename, studentai, paz_sk);
 }
@@ -743,22 +818,22 @@ void sortas(vector<Studentai> &studentai) {
                 sort(studentai.begin(), studentai.end(), [](const Studentai &a, const Studentai &b) {
                     return a.getVardas() < b.getVardas();
                 });
-            break;
+                break;
             case 2:
                 sort(studentai.begin(), studentai.end(), [](const Studentai &a, const Studentai &b) {
                     return a.getPavarde() < b.getPavarde();
                 });
-            break;
+                break;
             case 3:
                 sort(studentai.begin(), studentai.end(), [](const Studentai &a, const Studentai &b) {
                     return a.getVid() > b.getVid();
                 });
-            break;
+                break;
             case 4:
                 sort(studentai.begin(), studentai.end(), [](const Studentai &a, const Studentai &b) {
                     return a.getMed() > b.getMed();
                 });
-            break;
+                break;
         }
     } catch (const exception &e) {
         cout << "Klaida: " << e.what() << endl;
