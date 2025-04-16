@@ -545,6 +545,8 @@ void meniu(vector<Studentai> &studentai) {
                             nuskaitymas_pabaiga - nuskaitymas_pradzia).count() + sorto_laikas + chrono::duration<
                             double>(
                             dalinimo_pabaiga - dalinimo_pradzia).count() << "s" << endl;
+
+
                         break;
                     }
                     case 3: {
