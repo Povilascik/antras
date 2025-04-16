@@ -73,3 +73,89 @@ Palyginus rezultatus su struktūros ir klasės optimizacijomis, pastebėta, kad 
 Taip pat pastebėta, kad O3 optimizacija yra greitesnė už O2 ir O1 optimizacijas.
 
 # }
+
+# V1.2 užduotis {
+
+Copy construktorius - is vieno objekto nukopijuoja i kita objekta.
+
+Copy assignment operatorius - is vieno objekto nukopijuoja i kita objekta, kai objektai jau egzistuoja.
+
+Move construktorius - is vieno objekto perkelia i kita objekta, kai objektas neegzistuoja, ir objektas, is kurio keliame, yra sunaikinamas.
+
+Move assignment operatorius - is vieno objekto perkelia i kita objekta, kai objektas jau egzistuoja, ir objektas, is kurio keliame, yra sunaikinamas.
+
+Destruktorius - sunaikina objekta, kai jis nebereikalingas.
+
+Input operatorius - leidzia nuskaityti objekta is failo ir perdengia default input operatoriu.
+
+Output operatorius - leidzia isvesti objekta i faila ir perdengia default output operatoriu.
+
+------------------------------
+1000
+
+Nuskaitymo laikas: 0.0559618s
+
+rusiavimo didejimo tvarka laikas: 0.0007691s
+
+dalinimo laikas: 0.0018016s
+
+Is viso laiko: 0.0585325s
+
+------------------------------- 
+
+------------------------------- 
+10000
+
+Nuskaitymo laikas: 0.0935924s
+
+rusiavimo didejimo tvarka laikas: 0.0071961s
+
+dalinimo laikas: 0.0085245s
+
+Is viso laiko: 0.109313s
+
+-------------------------------
+
+-------------------------------
+100000
+
+Nuskaitymo laikas: 0.491717s
+
+rusiavimo didejimo tvarka laikas: 0.09089s
+
+dalinimo laikas: 0.0994205s
+
+Is viso laiko: 0.682028s
+
+-------------------------------
+
+-------------------------------
+1000000
+
+Nuskaitymo laikas: 3.03551s
+
+rusiavimo didejimo tvarka laikas: 0.907027s
+
+dalinimo laikas: 0.963172s
+
+Is viso laiko: 4.90571s
+
+-------------------------------
+
+-------------------------------
+10000000
+
+Nuskaitymo laikas: 31.1019s
+
+rusiavimo didejimo tvarka laikas: 9.76324s
+
+dalinimo laikas: 10.3145s
+
+Is viso laiko: 51.1796s
+
+-------------------------------
+
+Palyginus su praeita versija, pastebime, kad programa veikia greiciau.
+
+Isvada - naudojant "rule of five" bei perdengiant ivedimo ir isvedimo operatorius, programa veikia greiciau.
+# }
