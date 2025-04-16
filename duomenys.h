@@ -45,13 +45,6 @@ struct duomenys {
     double vid, med;
 };
 
-struct blogi {
-    // apsirasoma struktura duomenims saugoti.
-    string vardas, pavarde;
-    vector<int> nd;
-    int egz;
-    double vid, med;
-};
 
 void meniu(vector<duomenys > &studentai);
 
