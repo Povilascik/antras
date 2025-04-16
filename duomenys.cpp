@@ -106,7 +106,7 @@ void write_to_file(const string &filename, const Container &studentai) {
     for (const auto &student: studentai) {
         out << setw(20) << left << student.vardas << " " << setw(20) << left << student.pavarde << " " << setw(20) <<
                 left << fixed << setprecision(2) << student.vid << setw(20) << left << fixed << setprecision(2) <<
-                student.vid << "\n";
+                student.med << "\n";
     }
     cout << "write - baigta\n";
     out.close();
@@ -120,7 +120,26 @@ void split_into_two_containers(const Container& studentai, Container& vargsiukai
     }
 }
 
+template<typename Container>
+double strategija_2(Container& studentai, Container& blogis) {
+    auto start = chrono::high_resolution_clock::now();
+    stable_sort(studentai.begin(), studentai.end(), [](const duomenys &a, const duomenys &b) {
+        return a.vid < b.vid;
+    });
+    auto end = chrono::high_resolution_clock::now();
+int IT=0;
+    for (const auto& student : studentai) {
+        if(student.vid >= 5) break;
+        if(student.vid < 5.0) {
+            blogis.push_back(student);
+            ++IT;
+        }
+    }
+    studentai.erase(studentai.begin(), studentai.begin() + IT);
 
+    cout << "dalina - baigta\n";
+    return chrono::duration<double>(end - start).count();
+}
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 void meniu(vector<duomenys> &studentai) {
@@ -276,7 +295,7 @@ void meniu(vector<duomenys> &studentai) {
                         auto dalinimo_pradzia = chrono::high_resolution_clock::now();
                         switch (strategija) {
                             case 1:
-                                split_into_two_containers(studentai, blogis, kietiakai);
+                                sorto_laikas=split_into_two_containers(studentai, blogis, kietiakai);
                                 break;
 
                             case 2: {
