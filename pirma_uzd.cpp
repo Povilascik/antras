@@ -31,24 +31,34 @@ int main() {
             write("C:/Users/PC/Documents/GitHub/pirmas/rez.txt", studentai);
             break;
         case 4:
+            string filePath;
             int pasirinkimas;
             cout << "pasirinkite kuri faila norite nuskaityti: \n"
                     << "1. studentai10000.txt \n"
                     << "2. studentai100000.txt \n"
                     << "3. studentai1000000.txt \n";
             cin >> pasirinkimas;
-        if (cin.fail()) {
-            throw std::invalid_argument("Neteisingas ivestis.");
-        }
+        if(pasirinkimas==1) filePath="C:/Users/PC/Desktop/oop/pirmas-0.3_tag/pirmas-0.3_tag/studentai10000.txt";
+            else if(pasirinkimas==2) filePath="C:/Users/PC/Desktop/oop/pirmas-0.3_tag/pirmas-0.3_tag/studentai100000.txt";
+            else if(pasirinkimas==3) filePath="C:/Users/PC/Desktop/oop/pirmas-0.3_tag/pirmas-0.3_tag/studentai1000000.txt";
+            else {
+                cout << "Neteisingas pasirinkimas." << endl;
+                break;
+            }
+            ifstream fileCheck(filePath);
+            if (!fileCheck.good()) {
+                cout << "Klaida: failas " << filePath << " neegzistuoja arba nepasiekiamas." << endl;
+                return 0;
+            }
             switch (pasirinkimas) {
                 case 1:
-                    read("C:/Users/PC/Documents/GitHub/pirmas/studentai10000.txt", studentai);
+                    read(filePath, studentai);
                     break;
                 case 2:
-                    read("C:/Users/PC/Documents/GitHub/pirmas/studentai100000.txt", studentai);
+                    read(filePath, studentai);
                     break;
                 case 3:
-                    read("C:/Users/PC/Documents/GitHub/pirmas/studentai1000000.txt", studentai);
+                    read(filePath, studentai);
                     break;
                 default:
                     cout << "Neteisingas pasirinkimas." << endl;
