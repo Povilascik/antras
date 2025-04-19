@@ -24,6 +24,8 @@ void Studentai::setMed(double m) { med = m; }
 void Studentai::setReserveNd(int n) { nd.reserve(n); }
 
 void Studentai::clear() {
+    setVardas("");
+    setPavarde("");
     egz = 0;
     vid = 0;
     med = 0;
@@ -72,22 +74,25 @@ Studentai::Studentai(Studentai &&other) noexcept :
     egz(other.egz),
     vid(other.vid),
     med(other.med) {
+
     setVardas(move(other.getVardas()));
     setPavarde(move(other.getPavarde()));
-    // atstato reiksmes
+    // Atstato reiksmes
     other.clear();
 }
 
 // Move assignment operator
 Studentai &Studentai::operator=(Studentai &&other) noexcept {
     if (this != &other) {
+        // Move strings from base class directly
         setVardas(move(other.getVardas()));
         setPavarde(move(other.getPavarde()));
         nd = move(other.nd);
         egz = other.egz;
         vid = other.vid;
         med = other.med;
-        // atstato reiksmes
+
+        //Atstato reiksmes
         other.clear();
     }
     return *this;
