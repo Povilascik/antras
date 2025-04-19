@@ -3,6 +3,8 @@
 
 std::unordered_map<int, string> umap;
 
+// pasidaryti metoda clear(kartojasi per rule of five metodus.)
+
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 // Getters
@@ -23,14 +25,18 @@ void Studentai::setVid(double v) { vid = v; }
 void Studentai::setMed(double m) { med = m; }
 void Studentai::setReserveNd(int n) { nd.reserve(n); }
 
+void Studentai::clear() {
+    egz = 0;
+    vid = 0;
+    med = 0;
+}
+
 //Destruktor
 Studentai::~Studentai() {
     vardas = " ";
     pavarde = " ";
-    egz = 0;
     nd.clear();
-    vid = 0;
-    med = 0;
+   clear;
 }
 
 
@@ -66,9 +72,7 @@ Studentai::Studentai(Studentai &&other) noexcept :
     vid(other.vid),
     med(other.med) {
     // atstato reiksmes
-    other.egz = 0;
-    other.vid = 0;
-    other.med = 0;
+    clear;
 }
 
 // Move assignment operator
@@ -81,9 +85,6 @@ Studentai &Studentai::operator=(Studentai &&other) noexcept {
         vid = other.vid;
         med = other.med;
         // atstato reiksmes
-        other.egz = 0;
-        other.vid = 0;
-        other.med = 0;
     }
     return *this;
 }

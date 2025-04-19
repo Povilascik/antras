@@ -14,6 +14,7 @@
 #include <fstream>
 #include <cwchar>
 #include <sstream>
+#include "zmogus.h"
 
 const std::string test_file_location = TEST_FILE_LOCATION;      // skirtas naudoti SU CMake
 // const std::string test_file_location = "";                   // skirtas naudoti BE CMake
@@ -48,11 +49,9 @@ private:
 public:
     // Default constructor
     Studentai() : egz(0), vid(0), med(0) {}
-
-    // Default destructor
-    ~Studentai();
-
+    void Studentai::clear();
     // Rule of Five
+    ~Studentai();
     Studentai(const Studentai& other); // Copy constructor
     Studentai& operator=(const Studentai& other); // Copy assignment
     Studentai(Studentai&& other) noexcept; // Move constructor

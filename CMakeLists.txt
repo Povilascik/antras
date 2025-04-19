@@ -10,7 +10,8 @@ add_executable(programa
     pirma_uzd.cpp
         duomenys.cpp
         duomenys.h
-        )
+        zmogus.h
+)
 # Set Release build type with optimizations
 set(CMAKE_BUILD_TYPE Release)
 

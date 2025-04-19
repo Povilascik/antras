@@ -93,65 +93,61 @@ Output operatorius - leidzia isvesti objekta i faila ir perdengia default output
 ------------------------------
 1000
 
-Nuskaitymo laikas: 0.0559618s
-
-rusiavimo didejimo tvarka laikas: 0.0007691s
-
-dalinimo laikas: 0.0018016s
-
-Is viso laiko: 0.0585325s
+|laikas | sek.        |
+|---|-------------|
+| Nuskaitymo laikas: | 0.0559618s |
+| rusiavimo didejimo tvarka laikas: | 0.0007691s |
+| dalinimo laikas: |  0.0018016s  |
+| Is viso laiko:| 0.0585325s  |
 
 ------------------------------- 
 
 ------------------------------- 
 10000
 
-Nuskaitymo laikas: 0.0935924s
-
-rusiavimo didejimo tvarka laikas: 0.0071961s
-
-dalinimo laikas: 0.0085245s
-
-Is viso laiko: 0.109313s
+|laikas | sek.        |
+|---|-------------|
+| Nuskaitymo laikas: | 0.0935924s  |
+| rusiavimo didejimo tvarka laikas: | 0.09089s    |
+| dalinimo laikas: | 0.0085245s  |
+| Is viso laiko:| 0.109313s   |
 
 -------------------------------
 
 -------------------------------
 100000
 
-Nuskaitymo laikas: 0.491717s
-
-rusiavimo didejimo tvarka laikas: 0.09089s
-
-dalinimo laikas: 0.0994205s
-
-Is viso laiko: 0.682028s
+|laikas | sek.       |
+|---|------------|
+| Nuskaitymo laikas: | 0.491717s  |
+| rusiavimo didejimo tvarka laikas: | 0.09089s   |
+| dalinimo laikas: | 0.0994205s |
+| Is viso laiko:| 0.682028s   |
 
 -------------------------------
 
 -------------------------------
 1000000
 
-Nuskaitymo laikas: 3.03551s
+|laikas |sek. |
+|---|---|
+| Nuskaitymo laikas: | 3.03551s |
+| rusiavimo didejimo tvarka laikas: | 0.907027s |
+| dalinimo laikas: | 0.963172s |
+| Is viso laiko:| 4.90571s |
 
-rusiavimo didejimo tvarka laikas: 0.907027s
-
-dalinimo laikas: 0.963172s
-
-Is viso laiko: 4.90571s
 
 -------------------------------
 
 -------------------------------
 10000000
 
-Nuskaitymo laikas: 31.1019s
-
-rusiavimo didejimo tvarka laikas: 9.76324s
-
-dalinimo laikas: 10.3145s
-
-Is viso laiko: 51.1796s
+|laikas |sek. |
+|---|---|
+| Nuskaitymo laikas: | 31.1019s |
+| rusiavimo didejimo tvarka laikas: | 9.76324s |
+| dalinimo laikas: | 10.3145s |
+| Is viso laiko:| 51.1796s |
 
 -------------------------------
 
