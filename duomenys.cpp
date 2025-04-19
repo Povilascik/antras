@@ -3,8 +3,6 @@
 
 std::unordered_map<int, string> umap;
 
-// pasidaryti metoda clear(kartojasi per rule of five metodus.)
-
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 // Getters
@@ -29,32 +27,37 @@ void Studentai::clear() {
     egz = 0;
     vid = 0;
     med = 0;
+    nd.clear();
+}
+
+void Studentai::removeLastNd() {
+    if (!nd.empty()) {
+        nd.pop_back();
+    }
 }
 
 //Destruktor
 Studentai::~Studentai() {
-    vardas = " ";
-    pavarde = " ";
     nd.clear();
-   clear;
+   clear();
 }
 
 
 // Copy constructor
 Studentai::Studentai(const Studentai &other) :
-    vardas(other.vardas),
-    pavarde(other.pavarde),
     nd(other.nd),
     egz(other.egz),
     vid(other.vid),
     med(other.med) {
+    setVardas(other.getVardas());
+    setPavarde(other.getPavarde());
 }
 
 // Copy assignment operator
 Studentai &Studentai::operator=(const Studentai &other) {
     if (this != &other) {
-        vardas = other.vardas;
-        pavarde = other.pavarde;
+        setVardas(other.getVardas());
+        setPavarde(other.getPavarde());
         nd = other.nd;
         egz = other.egz;
         vid = other.vid;
@@ -65,36 +68,37 @@ Studentai &Studentai::operator=(const Studentai &other) {
 
 // Move constructor
 Studentai::Studentai(Studentai &&other) noexcept :
-    vardas(move(other.vardas)),
-    pavarde(move(other.pavarde)),
     nd(move(other.nd)),
     egz(other.egz),
     vid(other.vid),
     med(other.med) {
+    setVardas(move(other.getVardas()));
+    setPavarde(move(other.getPavarde()));
     // atstato reiksmes
-    clear;
+    other.clear();
 }
 
 // Move assignment operator
 Studentai &Studentai::operator=(Studentai &&other) noexcept {
     if (this != &other) {
-        vardas = move(other.vardas);
-        pavarde = move(other.pavarde);
+        setVardas(move(other.getVardas()));
+        setPavarde(move(other.getPavarde()));
         nd = move(other.nd);
         egz = other.egz;
         vid = other.vid;
         med = other.med;
         // atstato reiksmes
+        other.clear();
     }
     return *this;
 }
 
 // Output operator
 ostream &operator<<(ostream &os, const Studentai &student) {
-    os << setw(20) << left << student.vardas
-            << setw(20) << left << student.pavarde
-            << setw(20) << left << fixed << setprecision(2) << student.vid
-            << setw(20) << left << fixed << setprecision(2) << student.med;
+    os << setw(20) << left << student.getVardas()
+       << setw(20) << left << student.getPavarde()
+       << setw(20) << left << fixed << setprecision(2) << student.getVid()
+       << setw(20) << left << fixed << setprecision(2) << student.getMed();
     return os;
 }
 
@@ -112,13 +116,17 @@ std::ifstream &operator>>(std::ifstream &in, Studentai &student) {
     }
 
     stringstream ss(line);
+    string vardas, pavarde;
 
-    ss >> student.vardas >> student.pavarde;
+    ss >> vardas >> pavarde;
+    student.setVardas(vardas);
+    student.setPavarde(pavarde);
+
 
     int paz;
     while (ss >> paz) {
         if (paz >= 0 && paz <= 10) {
-            student.nd.push_back(paz);
+            student.addNd(paz);
         }
     }
 
@@ -126,11 +134,11 @@ std::ifstream &operator>>(std::ifstream &in, Studentai &student) {
         return in;
     }
 
-    student.egz = student.nd.back();
-    student.nd.pop_back();
+    student.setEgz(student.getNd().back());
+    student.removeLastNd();
 
-    student.vid = galutinis_vid(student.nd, student.egz);
-    student.med = galutinis_med(student.nd, student.egz);
+    student.setVid(galutinis_vid(student.getNd(), student.getEgz()));
+    student.setMed(galutinis_med(student.getNd(), student.getEgz()));
 
     return in;
 }

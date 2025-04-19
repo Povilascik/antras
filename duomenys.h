@@ -37,10 +37,8 @@ using std::rand;
 //////////////////////////////////////////////////////////
 ///klases.
 
-class Studentai {
+class Studentai : public Zmogus {
 private:
-    string vardas;
-    string pavarde;
     vector<int> nd;
     int egz;
     double vid;
@@ -49,9 +47,9 @@ private:
 public:
     // Default constructor
     Studentai() : egz(0), vid(0), med(0) {}
-    void Studentai::clear();
+
     // Rule of Five
-    ~Studentai();
+    ~Studentai() override;
     Studentai(const Studentai& other); // Copy constructor
     Studentai& operator=(const Studentai& other); // Copy assignment
     Studentai(Studentai&& other) noexcept; // Move constructor
@@ -60,24 +58,30 @@ public:
     // Operators
     friend std::ostream& operator<<(std::ostream& os, const Studentai& student);
     friend std::ifstream& operator>>(std::ifstream& in, Studentai& student);
+    friend bool operator==(const Studentai &a, const Studentai &b);
+
+    //Base klases funkcijos
+    string getVardas() const override;
+    string getPavarde() const override;
+    void setVardas(const string &v) override;
+    void setPavarde(const string &p) override;
 
     // Getters
-    string getVardas() const;
-    string getPavarde() const;
     vector<int> getNd() const;
     int getEgz() const;
     double getVid() const;
     double getMed() const;
 
     // Setters
-    void setVardas(const string &v);
-    void setPavarde(const string &p);
     void setNd(const vector<int> &n);
     void addNd(int n);
     void setEgz(int e);
     void setVid(double v);
     void setMed(double m);
     void setReserveNd(int n);
+
+    void clear();
+    void removeLastNd();
 };
 
 
