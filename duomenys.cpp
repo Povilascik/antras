@@ -1,4 +1,5 @@
 #include "duomenys.h"
+#include "zmogus.h"
 #include "saugojimas_masyve.h"
 
 std::unordered_map<int, string> umap;

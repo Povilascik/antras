@@ -155,3 +155,56 @@ Palyginus su praeita versija, pastebime, kad programa veikia greiciau.
 
 Isvada - naudojant "rule of five" bei perdengiant ivedimo ir isvedimo operatorius, programa veikia greiciau.
 # }
+
+# V1.5 užduotis {
+
+Sukurta Abstrakti klase "Zmogus", kuri aprasyta "zmogus.h" faile. Is sios klases isejo derived klase "Studentas". 
+
+1000
+
+|laikas |sek. |
+|---|---|
+| Nuskaitymo laikas: | 0.0384418s |
+| rusiavimo didejimo tvarka laikas: | 0.0011993s |
+| dalinimo laikas: | 0.0020543s |
+| Is viso laiko:| 0.0416954s |
+
+10000
+
+|laikas |sek. |
+|---|---|
+| Nuskaitymo laikas: | 0.0762262s |
+| rusiavimo didejimo tvarka laikas: | 0.0086051s |
+| dalinimo laikas: | 0.010063s |
+| Is viso laiko:| 0.010063s |
+
+100000
+
+|laikas |sek. |
+|---|---|
+| Nuskaitymo laikas: | 0.261733s |
+| rusiavimo didejimo tvarka laikas: | 0.10739s |
+| dalinimo laikas: | 0.114907s |
+| Is viso laiko:| 0.484031s |
+
+1000000
+
+|laikas |sek. |
+|---|---|
+| Nuskaitymo laikas: | 2.03144s |
+| rusiavimo didejimo tvarka laikas: | 1.28536s |
+| dalinimo laikas: | 1.3503s |
+| Is viso laiko:| 4.6671s |
+
+10000000
+
+|laikas |sek. |
+|---|---|
+| Nuskaitymo laikas: | 20.8932s |
+| rusiavimo didejimo tvarka laikas: | 13.888s |
+| dalinimo laikas: | 14.558s |
+| Is viso laiko:| 49.3392s |
+
+
+Atlikus tyrimus pastebima, kad programa veikia greiciau nei praeita versija. taip pat prideta nauja abstrakti klase "Zmogus".
+# }
