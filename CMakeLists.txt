@@ -25,3 +25,33 @@ endif()
 set(TEST_FILE_LOCATION "${CMAKE_SOURCE_DIR}/")
 target_compile_definitions(programa PRIVATE TEST_FILE_LOCATION="${TEST_FILE_LOCATION}")
 
+#-----------------------------------------------------------------
+
+# Include FetchContent module
+include(FetchContent)
+
+# Fetch GoogleTest
+FetchContent_Declare(
+        googletest
+        URL https://github.com/google/googletest/archive/refs/tags/v1.14.0.zip
+)
+# For Windows: Prevent overriding the parent project's compiler/linker settings
+set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
+FetchContent_MakeAvailable(googletest)
+
+## Add test executable
+#add_executable(studentai_tests
+#        studentai_test.cpp
+#        duomenys.cpp
+#        zmogus.h
+#        # Add any other source files needed
+#)
+#
+## Link against Google Test
+#target_link_libraries(studentai_tests PRIVATE
+#        gtest
+#        gtest_main
+#)
+
+enable_testing()
+add_test(NAME StudentaiTests COMMAND studentai_tests)
