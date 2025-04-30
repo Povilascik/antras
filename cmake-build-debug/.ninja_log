@@ -1,8 +1,21 @@
 # ninja log v6
-69	799	7612262803390812	CMakeFiles/saugojimas_masyve.dir/saugojimas_masyve.cpp.obj	542626ebbb10384a
 2666	3160	7641996607954093	pirmas.exe	d2e78138911bf815
-10	935	7676322185190261	build.ninja	cb9e6dcb161c7982
-62	5174	7676319229770975	CMakeFiles/programa.dir/duomenys.cpp.obj	a2a3a14843de1ea4
+23	6325	7676341561726351	_deps/googletest-build/googlemock/CMakeFiles/gmock.dir/src/gmock-all.cc.obj	e0e6a77ebadb9ede
+96	1992	7676337902606824	CMakeFiles/saugojimas_masyve.dir/saugojimas_masyve.cpp.obj	37f805acfabe0892
+10	22147	7676346959889787	build.ninja	2c06672cfa7fffdc
+136	8533	7676337903008566	CMakeFiles/programa.dir/duomenys.cpp.obj	a2a3a14843de1ea4
 800	1241	7612262810702213	saugojimas_masyve.exe	d2235e7b9bd80088
-49	1035	7676319229641315	CMakeFiles/programa.dir/pirma_uzd.cpp.obj	ee78be468c867d0c
-5185	6390	7676319280992211	programa.exe	724ac085fd1bf863
+115	2318	7676337902800869	CMakeFiles/programa.dir/pirma_uzd.cpp.obj	ee78be468c867d0c
+33	3179	7676341561827528	_deps/googletest-build/googletest/CMakeFiles/gtest_main.dir/src/gtest_main.cc.obj	9a022340aa65adff
+57	5078	7676345087654305	CMakeFiles/Studentai_tests.dir/duomenys.cpp.obj	2465374c95ea82e5
+37	1292	7676341462490400	programa.exe	ed58c6e1bc734ab2
+13	16878	7676341561622021	_deps/googletest-build/googletest/CMakeFiles/gtest.dir/src/gtest-all.cc.obj	1799d8c3698f1a1a
+62	3359	7676341562122190	_deps/googletest-build/googlemock/CMakeFiles/gmock_main.dir/src/gmock_main.cc.obj	430ffa2bbb12d03
+47	450	7676343837953282	lib/libgtest.a	5e4f2e5c8cdffe63
+450	632	7676343841991874	lib/libgtest_main.a	bacc755345f13b8c
+49	1935	7676345087579716	CMakeFiles/Studentai_tests.dir/Studentai_test.cpp.obj	c7f4c2e25ccf8dd3
+5078	6411	7676345137869822	Studentai_tests.exe	248a126aea24e3a1
+14	2517	7677056680684923	CMakeFiles/Studentai_tests.dir/Studentai_test.cpp.obj	c7f4c2e25ccf8dd3
+2518	6423	7677056705722198	Studentai_tests.exe	248a126aea24e3a1
+41	1942	7677057294725818	CMakeFiles/Studentai_tests.dir/Studentai_test.cpp.obj	c7f4c2e25ccf8dd3
+1943	3149	7677057313751913	Studentai_tests.exe	248a126aea24e3a1

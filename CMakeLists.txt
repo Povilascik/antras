@@ -33,25 +33,28 @@ include(FetchContent)
 # Fetch GoogleTest
 FetchContent_Declare(
         googletest
-        URL https://github.com/google/googletest/archive/refs/tags/v1.14.0.zip
+        GIT_REPOSITORY https://github.com/google/googletest.git
+        GIT_TAG v1.14.0
 )
 # For Windows: Prevent overriding the parent project's compiler/linker settings
 set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
 FetchContent_MakeAvailable(googletest)
 
-## Add test executable
-#add_executable(studentai_tests
-#        studentai_test.cpp
-#        duomenys.cpp
-#        zmogus.h
-#        # Add any other source files needed
-#)
-#
-## Link against Google Test
-#target_link_libraries(studentai_tests PRIVATE
-#        gtest
-#        gtest_main
-#)
+# Add test executable
+add_executable(Studentai_tests
+        Studentai_test.cpp
+        duomenys.cpp
+        zmogus.h
+)
+
+# Link against Google Test
+target_link_libraries(Studentai_tests PRIVATE
+        gtest
+        gtest_main
+)
+
+set(TEST_FILE_LOCATION "${CMAKE_SOURCE_DIR}/")
+target_compile_definitions(Studentai_tests PRIVATE TEST_FILE_LOCATION="${TEST_FILE_LOCATION}")
 
 enable_testing()
 add_test(NAME StudentaiTests COMMAND studentai_tests)
