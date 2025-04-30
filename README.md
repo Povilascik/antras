@@ -14,7 +14,7 @@
 
    4.2.3 Norint paleisti programą, per terminalą įveskite komandą `./programa`.
 
-   4.3 Norint pasileisti programą per jūsų pasirinktą editorių - užkomentuokite antrą "duomenys.cpp" eilutę ir atkomentuokite pirmą "duomenys.h".
+   4.3 Norint pasileisti programą per jūsų pasirinktą editorių - užkomentuokite antrą "duomenys.cpp" eilutę ir atkomentuokite pirmą "duomenys.h" bei užkomentuokite antrą.
 
 # V0.1 užduotis {
 
@@ -208,3 +208,11 @@ Sukurta Abstrakti klase "Zmogus", kuri aprasyta "zmogus.h" faile. Is sios klases
 
 Atlikus tyrimus pastebima, kad programa veikia greiciau nei praeita versija. taip pat prideta nauja abstrakti klase "Zmogus".
 # }
+
+# V2.0 užduotis {
+
+Sukurtas "Studentai_test.cpp" failas, kuriame yra atliekami Unit Test'ai su Google Test biblioteka. 
+
+Su testais patikrinta "Rule of five" bei konstruktoriaus funkcionalumas (viskas veikia).
+
+# } 
