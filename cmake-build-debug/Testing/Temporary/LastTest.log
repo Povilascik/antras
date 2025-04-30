@@ -1,33 +1,48 @@
-Start testing: Apr 30 12:16 FLE Daylight Time
+Start testing: Apr 30 12:26 FLE Daylight Time
 ----------------------------------------------------------
 1/1 Testing: StudentaiTests
 1/1 Test: StudentaiTests
 Command: "C:/Users/PC/Desktop/oop/1.0+/GitHub/antras/cmake-build-debug/Studentai_tests.exe"
 Directory: C:/Users/PC/Desktop/oop/1.0+/GitHub/antras/cmake-build-debug
-"StudentaiTests" start time: Apr 30 12:16 FLE Daylight Time
+"StudentaiTests" start time: Apr 30 12:26 FLE Daylight Time
 Output:
 ----------------------------------------------------------
 Running main() from C:/Users/PC/Desktop/oop/1.0+/GitHub/antras/cmake-build-debug/_deps/googletest-src/googletest/src/gtest_main.cc
-[==========] Running 3 tests from 1 test suite.
+[==========] Running 5 tests from 1 test suite.
 [----------] Global test environment set-up.
-[----------] 3 tests from StudentaiTest
+[----------] 5 tests from StudentaiTest
 [ RUN      ] StudentaiTest.DefaultConstructor
 [       OK ] StudentaiTest.DefaultConstructor (0 ms)
 [ RUN      ] StudentaiTest.CopyConstructor
 [       OK ] StudentaiTest.CopyConstructor (0 ms)
 [ RUN      ] StudentaiTest.CopyAssignment
 [       OK ] StudentaiTest.CopyAssignment (0 ms)
-[----------] 3 tests from StudentaiTest (0 ms total)
+[ RUN      ] StudentaiTest.MoveConstructor
+[       OK ] StudentaiTest.MoveConstructor (0 ms)
+[ RUN      ] StudentaiTest.MoveAssignment
+C:/Users/PC/Desktop/oop/1.0+/GitHub/antras/Studentai_test.cpp:92: Failure
+Expected equality of these values:
+  moved.getNd().size()
+    Which is: 5
+  originalSize+1
+    Which is: 6
+
+[  FAILED  ] StudentaiTest.MoveAssignment (0 ms)
+[----------] 5 tests from StudentaiTest (0 ms total)
 
 [----------] Global test environment tear-down
-[==========] 3 tests from 1 test suite ran. (0 ms total)
-[  PASSED  ] 3 tests.
+[==========] 5 tests from 1 test suite ran. (0 ms total)
+[  PASSED  ] 4 tests.
+[  FAILED  ] 1 test, listed below:
+[  FAILED  ] StudentaiTest.MoveAssignment
+
+ 1 FAILED TEST
 <end of output>
-Test time =   0.11 sec
+Test time =   0.12 sec
 ----------------------------------------------------------
-Test Passed.
-"StudentaiTests" end time: Apr 30 12:16 FLE Daylight Time
+Test Failed.
+"StudentaiTests" end time: Apr 30 12:26 FLE Daylight Time
 "StudentaiTests" time elapsed: 00:00:00
 ----------------------------------------------------------
 
-End testing: Apr 30 12:16 FLE Daylight Time
+End testing: Apr 30 12:26 FLE Daylight Time

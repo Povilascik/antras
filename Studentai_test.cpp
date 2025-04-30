@@ -52,14 +52,46 @@ TEST_F(StudentaiTest, CopyAssignment) {
     Studentai copy;
     copy = original;
 
-    // Verify the copy has the same values
+    // tikrina ar reiksmes sutampa
     EXPECT_EQ(copy.getVardas(), original.getVardas());
     EXPECT_EQ(copy.getPavarde(), original.getPavarde());
     EXPECT_EQ(copy.getNd(), original.getNd());
     EXPECT_EQ(copy.getEgz(), original.getEgz());
 
-    // Verify self-assignment works correctly
+    // Patirina priskyrimo sau operacija
     original = original;
     EXPECT_EQ(original.getVardas(), "Testas");
+}
+
+// Test move constructor
+TEST_F(StudentaiTest, MoveConstructor) {
+    Studentai original = createSampleStudent();
+    string originalName = original.getVardas();
+    vector<int> originalNd = original.getNd();
+
+    Studentai moved(std::move(original));
+
+    // Tikrina ar duomenys buvo perkelti
+    EXPECT_EQ(moved.getVardas(), originalName);
+    EXPECT_EQ(moved.getNd(), originalNd);
+
+    // Tikrina ar reiksmes tuscios
+    EXPECT_TRUE(original.getNd().empty() || original.getVardas().empty());
+}
+
+// Test move assignment operator
+TEST_F(StudentaiTest, MoveAssignment) {
+    Studentai original = createSampleStudent();
+    string originalName = original.getVardas();
+    int originalSize = original.getNd().size();
+
+    Studentai moved(std::move(original));
+
+    // Tikrina ar duomenys buvo perkelti
+    EXPECT_EQ(moved.getVardas(), originalName);
+    EXPECT_EQ(moved.getNd().size(), originalSize);
+
+    // Pradine reiksme turetu buti tuscia.
+    EXPECT_TRUE(original.getNd().empty() || original.getVardas().empty());
 }
 
