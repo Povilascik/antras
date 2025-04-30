@@ -95,3 +95,12 @@ TEST_F(StudentaiTest, MoveAssignment) {
     EXPECT_TRUE(original.getNd().empty() || original.getVardas().empty());
 }
 
+// Test destructor
+TEST_F(StudentaiTest, Destructor) {
+    for(int i = 0; i < 1000; i++) {
+        Studentai s = createSampleStudent();
+        s.setVardas(s.getVardas() + std::to_string(i));
+    }
+
+    SUCCEED(); // Google Testu macro, kuris netiesiogiai patikrina ar suveike testas
+}
