@@ -1,0 +1,13 @@
+digraph "write1"
+{
+ // LATEX_PDF_SIZE
+  bgcolor="transparent";
+  edge [fontname=Helvetica,fontsize=10,labelfontname=Helvetica,labelfontsize=10];
+  node [fontname=Helvetica,fontsize=10,shape=box,height=0.2,width=0.4];
+  rankdir="LR";
+  Node1 [id="Node000001",label="write1",height=0.2,width=0.4,color="gray40", fillcolor="grey60", style="filled", fontcolor="black",tooltip=" "];
+  Node1 -> Node2 [id="edge1_Node000001_Node000002",color="steelblue1",style="solid",tooltip=" "];
+  Node2 [id="Node000002",label="galutinis_med1",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$saugojimas__masyve_8h.html#abb77562deb29f7040319003dcf5bcc55",tooltip=" "];
+  Node1 -> Node3 [id="edge2_Node000001_Node000003",color="steelblue1",style="solid",tooltip=" "];
+  Node3 [id="Node000003",label="galutinis_vid1",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$saugojimas__masyve_8h.html#af93c6820382297058fc720d0c2973090",tooltip=" "];
+}

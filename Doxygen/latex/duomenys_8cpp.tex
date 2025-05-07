@@ -1,0 +1,368 @@
+\doxysection{duomenys.\+cpp File Reference}
+\hypertarget{duomenys_8cpp}{}\label{duomenys_8cpp}\index{duomenys.cpp@{duomenys.cpp}}
+{\ttfamily \#include "{}duomenys.\+h"{}}\newline
+{\ttfamily \#include "{}zmogus.\+h"{}}\newline
+{\ttfamily \#include "{}saugojimas\+\_\+masyve.\+h"{}}\newline
+Include dependency graph for duomenys.\+cpp\+:
+% FIG 0
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+ostream \& \mbox{\hyperlink{duomenys_8cpp_a166ae9d4c0fecf505882c3e125dd57be}{operator$<$$<$}} (ostream \&os, const \mbox{\hyperlink{class_studentai}{Studentai}} \&student)
+\item 
+std\+::ifstream \& \mbox{\hyperlink{duomenys_8cpp_a797703a41dad614199f75ec97c2d24d7}{operator$>$$>$}} (std\+::ifstream \&in, \mbox{\hyperlink{class_studentai}{Studentai}} \&student)
+\item 
+bool \mbox{\hyperlink{duomenys_8cpp_ac0104223215ee778bd728ec48821ab71}{operator==}} (const \mbox{\hyperlink{class_studentai}{Studentai}} \&a, const \mbox{\hyperlink{class_studentai}{Studentai}} \&b)
+\item 
+{\footnotesize template$<$typename Container$>$ }\\void \mbox{\hyperlink{duomenys_8cpp_a7878bded028e223e0f56808c1f863891}{readas}} (const string \&filename, Container \&\mbox{\hyperlink{pirma__uzd_8cpp_a2e1605046cff6c7eb0f57d9058fab75d}{studentai}})
+\item 
+{\footnotesize template$<$typename Container$>$ }\\double \mbox{\hyperlink{duomenys_8cpp_a488a3d5cb220ff349fa4470ccdced3ab}{dalina}} (Container \&\mbox{\hyperlink{pirma__uzd_8cpp_a2e1605046cff6c7eb0f57d9058fab75d}{studentai}}, Container \&blogis)
+\item 
+{\footnotesize template$<$typename Container$>$ }\\void \mbox{\hyperlink{duomenys_8cpp_ad74e18782c01c9968c54522d117ac22d}{sortass}} (Container \&\mbox{\hyperlink{pirma__uzd_8cpp_a2e1605046cff6c7eb0f57d9058fab75d}{studentai}})
+\item 
+{\footnotesize template$<$typename Container$>$ }\\void \mbox{\hyperlink{duomenys_8cpp_a0fa5b5ca631a149c50101bca22e61265}{write\+\_\+to\+\_\+file}} (const string \&filename, const Container \&\mbox{\hyperlink{pirma__uzd_8cpp_a2e1605046cff6c7eb0f57d9058fab75d}{studentai}})
+\item 
+{\footnotesize template$<$typename Container$>$ }\\void \mbox{\hyperlink{duomenys_8cpp_a5b706656f48e5284d53bdfc9ba4008f4}{split\+\_\+into\+\_\+two\+\_\+containers}} (Container \&\mbox{\hyperlink{pirma__uzd_8cpp_a2e1605046cff6c7eb0f57d9058fab75d}{studentai}}, Container \&vargsiukai, Container \&kietiakai)
+\item 
+void \mbox{\hyperlink{duomenys_8cpp_aef5936be8c5a2031a519b2aef52f8455}{testavimas}} (vector$<$ \mbox{\hyperlink{class_studentai}{Studentai}} $>$ \&\mbox{\hyperlink{pirma__uzd_8cpp_a2e1605046cff6c7eb0f57d9058fab75d}{studentai}})
+\item 
+void \mbox{\hyperlink{duomenys_8cpp_a2171e01c01a65d9cc681666137564aa1}{meniu}} (vector$<$ \mbox{\hyperlink{class_studentai}{Studentai}} $>$ \&\mbox{\hyperlink{pirma__uzd_8cpp_a2e1605046cff6c7eb0f57d9058fab75d}{studentai}})
+\item 
+void \mbox{\hyperlink{duomenys_8cpp_ad9b36a4645271ae3e0d2644691ab62c1}{galutinis\+\_\+vid}} (vector$<$ int $>$ nd, int egz, vector$<$ \mbox{\hyperlink{class_studentai}{Studentai}} $>$ \&\mbox{\hyperlink{pirma__uzd_8cpp_a2e1605046cff6c7eb0f57d9058fab75d}{studentai}})
+\item 
+double \mbox{\hyperlink{duomenys_8cpp_a87be9ab656cec94d33940fb4b73fb5a6}{galutinis\+\_\+vid}} (vector$<$ int $>$ nd, int egz)
+\item 
+void \mbox{\hyperlink{duomenys_8cpp_a45f27472ac531ef2c6c898143eae484c}{galutinis\+\_\+med}} (vector$<$ int $>$ nd, int egz, vector$<$ \mbox{\hyperlink{class_studentai}{Studentai}} $>$ \&\mbox{\hyperlink{pirma__uzd_8cpp_a2e1605046cff6c7eb0f57d9058fab75d}{studentai}})
+\item 
+double \mbox{\hyperlink{duomenys_8cpp_a332c27cfab984e1382f7089c3f4ea0aa}{galutinis\+\_\+med}} (vector$<$ int $>$ nd, int egz)
+\item 
+void \mbox{\hyperlink{duomenys_8cpp_a539cb8e0169f0fc92f9b46b7c262b4f4}{read}} (const string \&filename, vector$<$ \mbox{\hyperlink{class_studentai}{Studentai}} $>$ \&\mbox{\hyperlink{pirma__uzd_8cpp_a2e1605046cff6c7eb0f57d9058fab75d}{studentai}})
+\item 
+void \mbox{\hyperlink{duomenys_8cpp_a5e3750d22230690572ee7f7eeebbd28b}{ss\+\_\+write}} (const string \&filename, vector$<$ \mbox{\hyperlink{class_studentai}{Studentai}} $>$ \&\mbox{\hyperlink{pirma__uzd_8cpp_a2e1605046cff6c7eb0f57d9058fab75d}{studentai}})
+\item 
+void \mbox{\hyperlink{duomenys_8cpp_a9afb606775d0d0ecd96b02ea568b8f59}{write}} (vector$<$ \mbox{\hyperlink{class_studentai}{Studentai}} $>$ \&\mbox{\hyperlink{pirma__uzd_8cpp_a2e1605046cff6c7eb0f57d9058fab75d}{studentai}})
+\item 
+void \mbox{\hyperlink{duomenys_8cpp_a6cd7695bab95b5acb5efd335f963459f}{write\+\_\+file}} (const string \&filename, vector$<$ \mbox{\hyperlink{class_studentai}{Studentai}} $>$ \&\mbox{\hyperlink{pirma__uzd_8cpp_a2e1605046cff6c7eb0f57d9058fab75d}{studentai}}, int nd\+\_\+skaicius)
+\item 
+void \mbox{\hyperlink{duomenys_8cpp_a773f1ab03efd876c37ebf53748b3aeb5}{make\+\_\+file}} (vector$<$ \mbox{\hyperlink{class_studentai}{Studentai}} $>$ \&\mbox{\hyperlink{pirma__uzd_8cpp_a2e1605046cff6c7eb0f57d9058fab75d}{studentai}}, const string \&filename, int mok\+\_\+sk, int paz\+\_\+sk)
+\item 
+void \mbox{\hyperlink{duomenys_8cpp_ad42ed131fdc61ebca26422b6d3d9d35d}{generuoti\+\_\+paz}} (\mbox{\hyperlink{class_studentai}{Studentai}} \&student, int paz\+\_\+sk)
+\item 
+void \mbox{\hyperlink{duomenys_8cpp_a41929e11145711979762164fa632658d}{generuoti\+\_\+paz\+\_\+ranka}} (vector$<$ \mbox{\hyperlink{class_studentai}{Studentai}} $>$ \&\mbox{\hyperlink{pirma__uzd_8cpp_a2e1605046cff6c7eb0f57d9058fab75d}{studentai}})
+\item 
+void \mbox{\hyperlink{duomenys_8cpp_acfe9e26aaa7e8b479cc3ad4d77fb1b63}{generuoti\+\_\+vard}} (vector$<$ \mbox{\hyperlink{class_studentai}{Studentai}} $>$ \&\mbox{\hyperlink{pirma__uzd_8cpp_a2e1605046cff6c7eb0f57d9058fab75d}{studentai}}, int paz\+\_\+sk1, int mok\+\_\+sk)
+\item 
+void \mbox{\hyperlink{duomenys_8cpp_a6191ce67889c24b8e3066609efa88057}{sortas}} (vector$<$ \mbox{\hyperlink{class_studentai}{Studentai}} $>$ \&\mbox{\hyperlink{pirma__uzd_8cpp_a2e1605046cff6c7eb0f57d9058fab75d}{studentai}})
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+std\+::unordered\+\_\+map$<$ int, string $>$ \mbox{\hyperlink{duomenys_8cpp_a9ec5ec884f789f182e3f4d95f1e28f51}{umap}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{duomenys_8cpp_a488a3d5cb220ff349fa4470ccdced3ab}\index{duomenys.cpp@{duomenys.cpp}!dalina@{dalina}}
+\index{dalina@{dalina}!duomenys.cpp@{duomenys.cpp}}
+\doxysubsubsection{\texorpdfstring{dalina()}{dalina()}}
+{\footnotesize\ttfamily \label{duomenys_8cpp_a488a3d5cb220ff349fa4470ccdced3ab} 
+template$<$typename Container$>$ \\
+double dalina (\begin{DoxyParamCaption}\item[{Container \&}]{studentai}{, }\item[{Container \&}]{blogis}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{duomenys_8cpp_source_l00196}{196}} of file \mbox{\hyperlink{duomenys_8cpp_source}{duomenys.\+cpp}}.
+
+Here is the caller graph for this function\+:
+% FIG 1
+\Hypertarget{duomenys_8cpp_a332c27cfab984e1382f7089c3f4ea0aa}\index{duomenys.cpp@{duomenys.cpp}!galutinis\_med@{galutinis\_med}}
+\index{galutinis\_med@{galutinis\_med}!duomenys.cpp@{duomenys.cpp}}
+\doxysubsubsection{\texorpdfstring{galutinis\_med()}{galutinis\_med()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{duomenys_8cpp_a332c27cfab984e1382f7089c3f4ea0aa} 
+double galutinis\+\_\+med (\begin{DoxyParamCaption}\item[{vector$<$ int $>$}]{nd}{, }\item[{int}]{egz}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{duomenys_8cpp_source_l00636}{636}} of file \mbox{\hyperlink{duomenys_8cpp_source}{duomenys.\+cpp}}.
+
+\Hypertarget{duomenys_8cpp_a45f27472ac531ef2c6c898143eae484c}\index{duomenys.cpp@{duomenys.cpp}!galutinis\_med@{galutinis\_med}}
+\index{galutinis\_med@{galutinis\_med}!duomenys.cpp@{duomenys.cpp}}
+\doxysubsubsection{\texorpdfstring{galutinis\_med()}{galutinis\_med()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{duomenys_8cpp_a45f27472ac531ef2c6c898143eae484c} 
+void galutinis\+\_\+med (\begin{DoxyParamCaption}\item[{vector$<$ int $>$}]{nd}{, }\item[{int}]{egz}{, }\item[{vector$<$ \mbox{\hyperlink{class_studentai}{Studentai}} $>$ \&}]{studentai}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{duomenys_8cpp_source_l00620}{620}} of file \mbox{\hyperlink{duomenys_8cpp_source}{duomenys.\+cpp}}.
+
+Here is the call graph for this function\+:
+% FIG 2
+Here is the caller graph for this function\+:
+% FIG 3
+\Hypertarget{duomenys_8cpp_a87be9ab656cec94d33940fb4b73fb5a6}\index{duomenys.cpp@{duomenys.cpp}!galutinis\_vid@{galutinis\_vid}}
+\index{galutinis\_vid@{galutinis\_vid}!duomenys.cpp@{duomenys.cpp}}
+\doxysubsubsection{\texorpdfstring{galutinis\_vid()}{galutinis\_vid()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{duomenys_8cpp_a87be9ab656cec94d33940fb4b73fb5a6} 
+double galutinis\+\_\+vid (\begin{DoxyParamCaption}\item[{vector$<$ int $>$}]{nd}{, }\item[{int}]{egz}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{duomenys_8cpp_source_l00606}{606}} of file \mbox{\hyperlink{duomenys_8cpp_source}{duomenys.\+cpp}}.
+
+\Hypertarget{duomenys_8cpp_ad9b36a4645271ae3e0d2644691ab62c1}\index{duomenys.cpp@{duomenys.cpp}!galutinis\_vid@{galutinis\_vid}}
+\index{galutinis\_vid@{galutinis\_vid}!duomenys.cpp@{duomenys.cpp}}
+\doxysubsubsection{\texorpdfstring{galutinis\_vid()}{galutinis\_vid()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{duomenys_8cpp_ad9b36a4645271ae3e0d2644691ab62c1} 
+void galutinis\+\_\+vid (\begin{DoxyParamCaption}\item[{vector$<$ int $>$}]{nd}{, }\item[{int}]{egz}{, }\item[{vector$<$ \mbox{\hyperlink{class_studentai}{Studentai}} $>$ \&}]{studentai}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{duomenys_8cpp_source_l00589}{589}} of file \mbox{\hyperlink{duomenys_8cpp_source}{duomenys.\+cpp}}.
+
+Here is the call graph for this function\+:
+% FIG 4
+Here is the caller graph for this function\+:
+% FIG 5
+\Hypertarget{duomenys_8cpp_ad42ed131fdc61ebca26422b6d3d9d35d}\index{duomenys.cpp@{duomenys.cpp}!generuoti\_paz@{generuoti\_paz}}
+\index{generuoti\_paz@{generuoti\_paz}!duomenys.cpp@{duomenys.cpp}}
+\doxysubsubsection{\texorpdfstring{generuoti\_paz()}{generuoti\_paz()}}
+{\footnotesize\ttfamily \label{duomenys_8cpp_ad42ed131fdc61ebca26422b6d3d9d35d} 
+void generuoti\+\_\+paz (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_studentai}{Studentai}} \&}]{student}{, }\item[{int}]{paz\+\_\+sk}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{duomenys_8cpp_source_l00744}{744}} of file \mbox{\hyperlink{duomenys_8cpp_source}{duomenys.\+cpp}}.
+
+Here is the call graph for this function\+:
+% FIG 6
+Here is the caller graph for this function\+:
+% FIG 7
+\Hypertarget{duomenys_8cpp_a41929e11145711979762164fa632658d}\index{duomenys.cpp@{duomenys.cpp}!generuoti\_paz\_ranka@{generuoti\_paz\_ranka}}
+\index{generuoti\_paz\_ranka@{generuoti\_paz\_ranka}!duomenys.cpp@{duomenys.cpp}}
+\doxysubsubsection{\texorpdfstring{generuoti\_paz\_ranka()}{generuoti\_paz\_ranka()}}
+{\footnotesize\ttfamily \label{duomenys_8cpp_a41929e11145711979762164fa632658d} 
+void generuoti\+\_\+paz\+\_\+ranka (\begin{DoxyParamCaption}\item[{vector$<$ \mbox{\hyperlink{class_studentai}{Studentai}} $>$ \&}]{studentai}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{duomenys_8cpp_source_l00760}{760}} of file \mbox{\hyperlink{duomenys_8cpp_source}{duomenys.\+cpp}}.
+
+Here is the call graph for this function\+:
+% FIG 8
+Here is the caller graph for this function\+:
+% FIG 9
+\Hypertarget{duomenys_8cpp_acfe9e26aaa7e8b479cc3ad4d77fb1b63}\index{duomenys.cpp@{duomenys.cpp}!generuoti\_vard@{generuoti\_vard}}
+\index{generuoti\_vard@{generuoti\_vard}!duomenys.cpp@{duomenys.cpp}}
+\doxysubsubsection{\texorpdfstring{generuoti\_vard()}{generuoti\_vard()}}
+{\footnotesize\ttfamily \label{duomenys_8cpp_acfe9e26aaa7e8b479cc3ad4d77fb1b63} 
+void generuoti\+\_\+vard (\begin{DoxyParamCaption}\item[{vector$<$ \mbox{\hyperlink{class_studentai}{Studentai}} $>$ \&}]{studentai}{, }\item[{int}]{paz\+\_\+sk1}{, }\item[{int}]{mok\+\_\+sk}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{duomenys_8cpp_source_l00788}{788}} of file \mbox{\hyperlink{duomenys_8cpp_source}{duomenys.\+cpp}}.
+
+Here is the call graph for this function\+:
+% FIG 10
+Here is the caller graph for this function\+:
+% FIG 11
+\Hypertarget{duomenys_8cpp_a773f1ab03efd876c37ebf53748b3aeb5}\index{duomenys.cpp@{duomenys.cpp}!make\_file@{make\_file}}
+\index{make\_file@{make\_file}!duomenys.cpp@{duomenys.cpp}}
+\doxysubsubsection{\texorpdfstring{make\_file()}{make\_file()}}
+{\footnotesize\ttfamily \label{duomenys_8cpp_a773f1ab03efd876c37ebf53748b3aeb5} 
+void make\+\_\+file (\begin{DoxyParamCaption}\item[{vector$<$ \mbox{\hyperlink{class_studentai}{Studentai}} $>$ \&}]{studentai}{, }\item[{const string \&}]{filename}{, }\item[{int}]{mok\+\_\+sk}{, }\item[{int}]{paz\+\_\+sk}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{duomenys_8cpp_source_l00739}{739}} of file \mbox{\hyperlink{duomenys_8cpp_source}{duomenys.\+cpp}}.
+
+Here is the call graph for this function\+:
+% FIG 12
+Here is the caller graph for this function\+:
+% FIG 13
+\Hypertarget{duomenys_8cpp_a2171e01c01a65d9cc681666137564aa1}\index{duomenys.cpp@{duomenys.cpp}!meniu@{meniu}}
+\index{meniu@{meniu}!duomenys.cpp@{duomenys.cpp}}
+\doxysubsubsection{\texorpdfstring{meniu()}{meniu()}}
+{\footnotesize\ttfamily \label{duomenys_8cpp_a2171e01c01a65d9cc681666137564aa1} 
+void meniu (\begin{DoxyParamCaption}\item[{vector$<$ \mbox{\hyperlink{class_studentai}{Studentai}} $>$ \&}]{studentai}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{duomenys_8cpp_source_l00337}{337}} of file \mbox{\hyperlink{duomenys_8cpp_source}{duomenys.\+cpp}}.
+
+Here is the call graph for this function\+:
+% FIG 14
+Here is the caller graph for this function\+:
+% FIG 15
+\Hypertarget{duomenys_8cpp_a166ae9d4c0fecf505882c3e125dd57be}\index{duomenys.cpp@{duomenys.cpp}!operator$<$$<$@{operator$<$$<$}}
+\index{operator$<$$<$@{operator$<$$<$}!duomenys.cpp@{duomenys.cpp}}
+\doxysubsubsection{\texorpdfstring{operator$<$$<$()}{operator<<()}}
+{\footnotesize\ttfamily \label{duomenys_8cpp_a166ae9d4c0fecf505882c3e125dd57be} 
+ostream \& operator$<$$<$ (\begin{DoxyParamCaption}\item[{ostream \&}]{os}{, }\item[{const \mbox{\hyperlink{class_studentai}{Studentai}} \&}]{student}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{duomenys_8cpp_source_l00103}{103}} of file \mbox{\hyperlink{duomenys_8cpp_source}{duomenys.\+cpp}}.
+
+Here is the call graph for this function\+:
+% FIG 16
+\Hypertarget{duomenys_8cpp_ac0104223215ee778bd728ec48821ab71}\index{duomenys.cpp@{duomenys.cpp}!operator==@{operator==}}
+\index{operator==@{operator==}!duomenys.cpp@{duomenys.cpp}}
+\doxysubsubsection{\texorpdfstring{operator==()}{operator==()}}
+{\footnotesize\ttfamily \label{duomenys_8cpp_ac0104223215ee778bd728ec48821ab71} 
+bool operator== (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_studentai}{Studentai}} \&}]{a}{, }\item[{const \mbox{\hyperlink{class_studentai}{Studentai}} \&}]{b}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{duomenys_8cpp_source_l00153}{153}} of file \mbox{\hyperlink{duomenys_8cpp_source}{duomenys.\+cpp}}.
+
+\Hypertarget{duomenys_8cpp_a797703a41dad614199f75ec97c2d24d7}\index{duomenys.cpp@{duomenys.cpp}!operator$>$$>$@{operator$>$$>$}}
+\index{operator$>$$>$@{operator$>$$>$}!duomenys.cpp@{duomenys.cpp}}
+\doxysubsubsection{\texorpdfstring{operator$>$$>$()}{operator>>()}}
+{\footnotesize\ttfamily \label{duomenys_8cpp_a797703a41dad614199f75ec97c2d24d7} 
+std\+::ifstream \& operator$>$$>$ (\begin{DoxyParamCaption}\item[{std\+::ifstream \&}]{in}{, }\item[{\mbox{\hyperlink{class_studentai}{Studentai}} \&}]{student}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{duomenys_8cpp_source_l00112}{112}} of file \mbox{\hyperlink{duomenys_8cpp_source}{duomenys.\+cpp}}.
+
+\Hypertarget{duomenys_8cpp_a539cb8e0169f0fc92f9b46b7c262b4f4}\index{duomenys.cpp@{duomenys.cpp}!read@{read}}
+\index{read@{read}!duomenys.cpp@{duomenys.cpp}}
+\doxysubsubsection{\texorpdfstring{read()}{read()}}
+{\footnotesize\ttfamily \label{duomenys_8cpp_a539cb8e0169f0fc92f9b46b7c262b4f4} 
+void read (\begin{DoxyParamCaption}\item[{const string \&}]{filename}{, }\item[{vector$<$ \mbox{\hyperlink{class_studentai}{Studentai}} $>$ \&}]{studentai}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{duomenys_8cpp_source_l00650}{650}} of file \mbox{\hyperlink{duomenys_8cpp_source}{duomenys.\+cpp}}.
+
+Here is the call graph for this function\+:
+% FIG 17
+Here is the caller graph for this function\+:
+% FIG 18
+\Hypertarget{duomenys_8cpp_a7878bded028e223e0f56808c1f863891}\index{duomenys.cpp@{duomenys.cpp}!readas@{readas}}
+\index{readas@{readas}!duomenys.cpp@{duomenys.cpp}}
+\doxysubsubsection{\texorpdfstring{readas()}{readas()}}
+{\footnotesize\ttfamily \label{duomenys_8cpp_a7878bded028e223e0f56808c1f863891} 
+template$<$typename Container$>$ \\
+void readas (\begin{DoxyParamCaption}\item[{const string \&}]{filename}{, }\item[{Container \&}]{studentai}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{duomenys_8cpp_source_l00167}{167}} of file \mbox{\hyperlink{duomenys_8cpp_source}{duomenys.\+cpp}}.
+
+Here is the caller graph for this function\+:
+% FIG 19
+\Hypertarget{duomenys_8cpp_a6191ce67889c24b8e3066609efa88057}\index{duomenys.cpp@{duomenys.cpp}!sortas@{sortas}}
+\index{sortas@{sortas}!duomenys.cpp@{duomenys.cpp}}
+\doxysubsubsection{\texorpdfstring{sortas()}{sortas()}}
+{\footnotesize\ttfamily \label{duomenys_8cpp_a6191ce67889c24b8e3066609efa88057} 
+void sortas (\begin{DoxyParamCaption}\item[{vector$<$ \mbox{\hyperlink{class_studentai}{Studentai}} $>$ \&}]{studentai}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{duomenys_8cpp_source_l00820}{820}} of file \mbox{\hyperlink{duomenys_8cpp_source}{duomenys.\+cpp}}.
+
+Here is the caller graph for this function\+:
+% FIG 20
+\Hypertarget{duomenys_8cpp_ad74e18782c01c9968c54522d117ac22d}\index{duomenys.cpp@{duomenys.cpp}!sortass@{sortass}}
+\index{sortass@{sortass}!duomenys.cpp@{duomenys.cpp}}
+\doxysubsubsection{\texorpdfstring{sortass()}{sortass()}}
+{\footnotesize\ttfamily \label{duomenys_8cpp_ad74e18782c01c9968c54522d117ac22d} 
+template$<$typename Container$>$ \\
+void sortass (\begin{DoxyParamCaption}\item[{Container \&}]{studentai}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{duomenys_8cpp_source_l00213}{213}} of file \mbox{\hyperlink{duomenys_8cpp_source}{duomenys.\+cpp}}.
+
+Here is the caller graph for this function\+:
+% FIG 21
+\Hypertarget{duomenys_8cpp_a5b706656f48e5284d53bdfc9ba4008f4}\index{duomenys.cpp@{duomenys.cpp}!split\_into\_two\_containers@{split\_into\_two\_containers}}
+\index{split\_into\_two\_containers@{split\_into\_two\_containers}!duomenys.cpp@{duomenys.cpp}}
+\doxysubsubsection{\texorpdfstring{split\_into\_two\_containers()}{split\_into\_two\_containers()}}
+{\footnotesize\ttfamily \label{duomenys_8cpp_a5b706656f48e5284d53bdfc9ba4008f4} 
+template$<$typename Container$>$ \\
+void split\+\_\+into\+\_\+two\+\_\+containers (\begin{DoxyParamCaption}\item[{Container \&}]{studentai}{, }\item[{Container \&}]{vargsiukai}{, }\item[{Container \&}]{kietiakai}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{duomenys_8cpp_source_l00267}{267}} of file \mbox{\hyperlink{duomenys_8cpp_source}{duomenys.\+cpp}}.
+
+Here is the caller graph for this function\+:
+% FIG 22
+\Hypertarget{duomenys_8cpp_a5e3750d22230690572ee7f7eeebbd28b}\index{duomenys.cpp@{duomenys.cpp}!ss\_write@{ss\_write}}
+\index{ss\_write@{ss\_write}!duomenys.cpp@{duomenys.cpp}}
+\doxysubsubsection{\texorpdfstring{ss\_write()}{ss\_write()}}
+{\footnotesize\ttfamily \label{duomenys_8cpp_a5e3750d22230690572ee7f7eeebbd28b} 
+void ss\+\_\+write (\begin{DoxyParamCaption}\item[{const string \&}]{filename}{, }\item[{vector$<$ \mbox{\hyperlink{class_studentai}{Studentai}} $>$ \&}]{studentai}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{duomenys_8cpp_source_l00682}{682}} of file \mbox{\hyperlink{duomenys_8cpp_source}{duomenys.\+cpp}}.
+
+Here is the caller graph for this function\+:
+% FIG 23
+\Hypertarget{duomenys_8cpp_aef5936be8c5a2031a519b2aef52f8455}\index{duomenys.cpp@{duomenys.cpp}!testavimas@{testavimas}}
+\index{testavimas@{testavimas}!duomenys.cpp@{duomenys.cpp}}
+\doxysubsubsection{\texorpdfstring{testavimas()}{testavimas()}}
+{\footnotesize\ttfamily \label{duomenys_8cpp_aef5936be8c5a2031a519b2aef52f8455} 
+void testavimas (\begin{DoxyParamCaption}\item[{vector$<$ \mbox{\hyperlink{class_studentai}{Studentai}} $>$ \&}]{studentai}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{duomenys_8cpp_source_l00285}{285}} of file \mbox{\hyperlink{duomenys_8cpp_source}{duomenys.\+cpp}}.
+
+Here is the call graph for this function\+:
+% FIG 24
+Here is the caller graph for this function\+:
+% FIG 25
+\Hypertarget{duomenys_8cpp_a9afb606775d0d0ecd96b02ea568b8f59}\index{duomenys.cpp@{duomenys.cpp}!write@{write}}
+\index{write@{write}!duomenys.cpp@{duomenys.cpp}}
+\doxysubsubsection{\texorpdfstring{write()}{write()}}
+{\footnotesize\ttfamily \label{duomenys_8cpp_a9afb606775d0d0ecd96b02ea568b8f59} 
+void write (\begin{DoxyParamCaption}\item[{vector$<$ \mbox{\hyperlink{class_studentai}{Studentai}} $>$ \&}]{studentai}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{duomenys_8cpp_source_l00702}{702}} of file \mbox{\hyperlink{duomenys_8cpp_source}{duomenys.\+cpp}}.
+
+Here is the caller graph for this function\+:
+% FIG 26
+\Hypertarget{duomenys_8cpp_a6cd7695bab95b5acb5efd335f963459f}\index{duomenys.cpp@{duomenys.cpp}!write\_file@{write\_file}}
+\index{write\_file@{write\_file}!duomenys.cpp@{duomenys.cpp}}
+\doxysubsubsection{\texorpdfstring{write\_file()}{write\_file()}}
+{\footnotesize\ttfamily \label{duomenys_8cpp_a6cd7695bab95b5acb5efd335f963459f} 
+void write\+\_\+file (\begin{DoxyParamCaption}\item[{const string \&}]{filename}{, }\item[{vector$<$ \mbox{\hyperlink{class_studentai}{Studentai}} $>$ \&}]{studentai}{, }\item[{int}]{nd\+\_\+skaicius}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{duomenys_8cpp_source_l00711}{711}} of file \mbox{\hyperlink{duomenys_8cpp_source}{duomenys.\+cpp}}.
+
+Here is the caller graph for this function\+:
+% FIG 27
+\Hypertarget{duomenys_8cpp_a0fa5b5ca631a149c50101bca22e61265}\index{duomenys.cpp@{duomenys.cpp}!write\_to\_file@{write\_to\_file}}
+\index{write\_to\_file@{write\_to\_file}!duomenys.cpp@{duomenys.cpp}}
+\doxysubsubsection{\texorpdfstring{write\_to\_file()}{write\_to\_file()}}
+{\footnotesize\ttfamily \label{duomenys_8cpp_a0fa5b5ca631a149c50101bca22e61265} 
+template$<$typename Container$>$ \\
+void write\+\_\+to\+\_\+file (\begin{DoxyParamCaption}\item[{const string \&}]{filename}{, }\item[{const Container \&}]{studentai}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{duomenys_8cpp_source_l00254}{254}} of file \mbox{\hyperlink{duomenys_8cpp_source}{duomenys.\+cpp}}.
+
+Here is the caller graph for this function\+:
+% FIG 28
+
+
+\doxysubsection{Variable Documentation}
+\Hypertarget{duomenys_8cpp_a9ec5ec884f789f182e3f4d95f1e28f51}\index{duomenys.cpp@{duomenys.cpp}!umap@{umap}}
+\index{umap@{umap}!duomenys.cpp@{duomenys.cpp}}
+\doxysubsubsection{\texorpdfstring{umap}{umap}}
+{\footnotesize\ttfamily \label{duomenys_8cpp_a9ec5ec884f789f182e3f4d95f1e28f51} 
+std\+::unordered\+\_\+map$<$int, string$>$ umap}
+
+
+
+Definition at line \mbox{\hyperlink{duomenys_8cpp_source_l00005}{5}} of file \mbox{\hyperlink{duomenys_8cpp_source}{duomenys.\+cpp}}.
+

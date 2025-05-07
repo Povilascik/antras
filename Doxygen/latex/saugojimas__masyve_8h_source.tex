@@ -1,0 +1,92 @@
+\doxysection{saugojimas\+\_\+masyve.\+h}
+\hypertarget{saugojimas__masyve_8h_source}{}\label{saugojimas__masyve_8h_source}\mbox{\hyperlink{saugojimas__masyve_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{saugojimas__masyve_8h_source_l00001}00001\ \textcolor{preprocessor}{\#ifndef\ SAUGOJIMAS\_MASYVE\_H}}
+\DoxyCodeLine{\Hypertarget{saugojimas__masyve_8h_source_l00002}00002\ \textcolor{preprocessor}{\#define\ SAUGOJIMAS\_MASYVE\_H}}
+\DoxyCodeLine{\Hypertarget{saugojimas__masyve_8h_source_l00003}00003\ }
+\DoxyCodeLine{\Hypertarget{saugojimas__masyve_8h_source_l00004}00004\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{\Hypertarget{saugojimas__masyve_8h_source_l00005}00005\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{\Hypertarget{saugojimas__masyve_8h_source_l00006}00006\ \textcolor{preprocessor}{\#include\ <iomanip>}}
+\DoxyCodeLine{\Hypertarget{saugojimas__masyve_8h_source_l00007}00007\ \textcolor{preprocessor}{\#include\ <fstream>}}
+\DoxyCodeLine{\Hypertarget{saugojimas__masyve_8h_source_l00008}00008\ \textcolor{preprocessor}{\#include\ <algorithm>}}
+\DoxyCodeLine{\Hypertarget{saugojimas__masyve_8h_source_l00009}00009\ }
+\DoxyCodeLine{\Hypertarget{saugojimas__masyve_8h_source_l00010}00010\ \textcolor{keyword}{using\ namespace\ }std;}
+\DoxyCodeLine{\Hypertarget{saugojimas__masyve_8h_source_l00011}00011\ }
+\DoxyCodeLine{\Hypertarget{saugojimas__masyve_8h_source_l00012}\mbox{\hyperlink{saugojimas__masyve_8h_a5979a00ba25a20c935f996d586415433}{00012}}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{saugojimas__masyve_8h_a5979a00ba25a20c935f996d586415433}{zmn\_sk}}\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{saugojimas__masyve_8h_source_l00013}00013\ }
+\DoxyCodeLine{\Hypertarget{saugojimas__masyve_8h_source_l00014}\mbox{\hyperlink{structduomenys__m}{00014}}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structduomenys__m}{duomenys\_m}}\ \{}
+\DoxyCodeLine{\Hypertarget{saugojimas__masyve_8h_source_l00015}\mbox{\hyperlink{structduomenys__m_aaa0e0a94fe2dcae233f755b564f93ef5}{00015}}\ \ \ \ \ std::string\ \mbox{\hyperlink{structduomenys__m_a48814feae2ca1be01c2349b68f4f1c4d}{vardas}},\ \mbox{\hyperlink{structduomenys__m_aaa0e0a94fe2dcae233f755b564f93ef5}{pavarde}};}
+\DoxyCodeLine{\Hypertarget{saugojimas__masyve_8h_source_l00016}\mbox{\hyperlink{structduomenys__m_add32eb2a3ea3027c5e4f263770a41523}{00016}}\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structduomenys__m_add32eb2a3ea3027c5e4f263770a41523}{nd}}[100];}
+\DoxyCodeLine{\Hypertarget{saugojimas__masyve_8h_source_l00017}\mbox{\hyperlink{structduomenys__m_a36eff363425160e23d98b14a554f45e1}{00017}}\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structduomenys__m_a36eff363425160e23d98b14a554f45e1}{nd\_sk}};}
+\DoxyCodeLine{\Hypertarget{saugojimas__masyve_8h_source_l00018}\mbox{\hyperlink{structduomenys__m_aba95228c8af147c2acb73290f0521ff3}{00018}}\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structduomenys__m_aba95228c8af147c2acb73290f0521ff3}{egz}};}
+\DoxyCodeLine{\Hypertarget{saugojimas__masyve_8h_source_l00019}\mbox{\hyperlink{saugojimas__masyve_8h_a99aa01c3f3fab89e65d302b197eede91}{00019}}\ \}\mbox{\hyperlink{saugojimas__masyve_8h_a99aa01c3f3fab89e65d302b197eede91}{B}}[100];}
+\DoxyCodeLine{\Hypertarget{saugojimas__masyve_8h_source_l00020}00020\ }
+\DoxyCodeLine{\Hypertarget{saugojimas__masyve_8h_source_l00021}\mbox{\hyperlink{saugojimas__masyve_8h_a4b311c5df22e1fce50a3511d7e3d8b58}{00021}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{saugojimas__masyve_8h_a4b311c5df22e1fce50a3511d7e3d8b58}{ivedimas}}()\ \{}
+\DoxyCodeLine{\Hypertarget{saugojimas__masyve_8h_source_l00022}00022\ \ \ \ \ \textcolor{keywordflow}{try}\ \{}
+\DoxyCodeLine{\Hypertarget{saugojimas__masyve_8h_source_l00023}00023\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}\ (\textcolor{keyword}{true})\ \{}
+\DoxyCodeLine{\Hypertarget{saugojimas__masyve_8h_source_l00024}00024\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structduomenys__m}{duomenys\_m}}\ student;}
+\DoxyCodeLine{\Hypertarget{saugojimas__masyve_8h_source_l00025}00025\ \ \ \ \ \ \ \ \ \ \ \ \ cout\ <<\ \textcolor{stringliteral}{"{}iveskite\ mokinio\ varda\ (iveskite\ 'p'\ norint\ uzbaigti):\ "{}};}
+\DoxyCodeLine{\Hypertarget{saugojimas__masyve_8h_source_l00026}00026\ \ \ \ \ \ \ \ \ \ \ \ \ cin\ >>\ student.\mbox{\hyperlink{structduomenys__m_a48814feae2ca1be01c2349b68f4f1c4d}{vardas}};}
+\DoxyCodeLine{\Hypertarget{saugojimas__masyve_8h_source_l00027}00027\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (student.\mbox{\hyperlink{structduomenys__m_a48814feae2ca1be01c2349b68f4f1c4d}{vardas}}\ ==\ \textcolor{stringliteral}{"{}p"{}})\ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{saugojimas__masyve_8h_source_l00028}00028\ \ \ \ \ \ \ \ \ \ \ \ \ cout\ <<\ \textcolor{stringliteral}{"{}iveskite\ mokinio\ pavarde:\ "{}};}
+\DoxyCodeLine{\Hypertarget{saugojimas__masyve_8h_source_l00029}00029\ \ \ \ \ \ \ \ \ \ \ \ \ cin\ >>\ student.\mbox{\hyperlink{structduomenys__m_aaa0e0a94fe2dcae233f755b564f93ef5}{pavarde}};}
+\DoxyCodeLine{\Hypertarget{saugojimas__masyve_8h_source_l00030}00030\ \ \ \ \ \ \ \ \ \ \ \ \ student.\mbox{\hyperlink{structduomenys__m_a36eff363425160e23d98b14a554f45e1}{nd\_sk}}\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{saugojimas__masyve_8h_source_l00031}00031\ \ \ \ \ \ \ \ \ \ \ \ \ cout\ <<\ \textcolor{stringliteral}{"{}iveskite\ pazymius\ uz\ namu\ darbus\ (iveskite\ -\/1\ norint\ uzbaigti):\ "{}};}
+\DoxyCodeLine{\Hypertarget{saugojimas__masyve_8h_source_l00032}00032\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}\ (\textcolor{keyword}{true})\ \{}
+\DoxyCodeLine{\Hypertarget{saugojimas__masyve_8h_source_l00033}00033\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ grade;}
+\DoxyCodeLine{\Hypertarget{saugojimas__masyve_8h_source_l00034}00034\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ cin\ >>\ grade;}
+\DoxyCodeLine{\Hypertarget{saugojimas__masyve_8h_source_l00035}00035\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (cin.fail())\ \{}
+\DoxyCodeLine{\Hypertarget{saugojimas__masyve_8h_source_l00036}00036\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ runtime\_error(\textcolor{stringliteral}{"{}Netinkamas\ pazymys"{}});}
+\DoxyCodeLine{\Hypertarget{saugojimas__masyve_8h_source_l00037}00037\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{saugojimas__masyve_8h_source_l00038}00038\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (grade\ ==\ -\/1)\ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{saugojimas__masyve_8h_source_l00039}00039\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (grade\ >=\ 0\ \&\&\ grade\ <=\ 10)\ \{}
+\DoxyCodeLine{\Hypertarget{saugojimas__masyve_8h_source_l00040}00040\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ student.\mbox{\hyperlink{structduomenys__m_add32eb2a3ea3027c5e4f263770a41523}{nd}}[student.\mbox{\hyperlink{structduomenys__m_a36eff363425160e23d98b14a554f45e1}{nd\_sk}}++]\ =\ grade;}
+\DoxyCodeLine{\Hypertarget{saugojimas__masyve_8h_source_l00041}00041\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{saugojimas__masyve_8h_source_l00042}00042\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{saugojimas__masyve_8h_source_l00043}00043\ \ \ \ \ \ \ \ \ \ \ \ \ cout\ <<\ \textcolor{stringliteral}{"{}iveskite\ egazmino\ pazymi:\ "{}};}
+\DoxyCodeLine{\Hypertarget{saugojimas__masyve_8h_source_l00044}00044\ \ \ \ \ \ \ \ \ \ \ \ \ cin\ >>\ student.\mbox{\hyperlink{structduomenys__m_aba95228c8af147c2acb73290f0521ff3}{egz}};}
+\DoxyCodeLine{\Hypertarget{saugojimas__masyve_8h_source_l00045}00045\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (cin.fail())\ \{}
+\DoxyCodeLine{\Hypertarget{saugojimas__masyve_8h_source_l00046}00046\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ runtime\_error(\textcolor{stringliteral}{"{}Netinkamas\ egazmino\ pazymys"{}});}
+\DoxyCodeLine{\Hypertarget{saugojimas__masyve_8h_source_l00047}00047\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{saugojimas__masyve_8h_source_l00048}00048\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{saugojimas__masyve_8h_a99aa01c3f3fab89e65d302b197eede91}{B}}[\mbox{\hyperlink{saugojimas__masyve_8h_a5979a00ba25a20c935f996d586415433}{zmn\_sk}}++]\ =\ student;}
+\DoxyCodeLine{\Hypertarget{saugojimas__masyve_8h_source_l00049}00049\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{saugojimas__masyve_8h_source_l00050}00050\ \ \ \ \ \}\ \textcolor{keywordflow}{catch}\ (\textcolor{keyword}{const}\ exception\ \&e)\ \{}
+\DoxyCodeLine{\Hypertarget{saugojimas__masyve_8h_source_l00051}00051\ \ \ \ \ \ \ \ \ cerr\ <<\ \textcolor{stringliteral}{"{}Klaida:\ "{}}\ <<\ e.what()\ <<\ endl;}
+\DoxyCodeLine{\Hypertarget{saugojimas__masyve_8h_source_l00052}00052\ \ \ \ \ \ \ \ \ cin.clear();}
+\DoxyCodeLine{\Hypertarget{saugojimas__masyve_8h_source_l00053}00053\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{saugojimas__masyve_8h_source_l00054}00054\ \}}
+\DoxyCodeLine{\Hypertarget{saugojimas__masyve_8h_source_l00055}00055\ }
+\DoxyCodeLine{\Hypertarget{saugojimas__masyve_8h_source_l00056}\mbox{\hyperlink{saugojimas__masyve_8h_af93c6820382297058fc720d0c2973090}{00056}}\ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{saugojimas__masyve_8h_af93c6820382297058fc720d0c2973090}{galutinis\_vid1}}(\textcolor{keywordtype}{int}\ j)\ \{}
+\DoxyCodeLine{\Hypertarget{saugojimas__masyve_8h_source_l00057}00057\ \ \ \ \ \textcolor{keywordtype}{double}\ vid\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{saugojimas__masyve_8h_source_l00058}00058\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ \mbox{\hyperlink{saugojimas__masyve_8h_a99aa01c3f3fab89e65d302b197eede91}{B}}[j].nd\_sk;\ i++)\ \{}
+\DoxyCodeLine{\Hypertarget{saugojimas__masyve_8h_source_l00059}00059\ \ \ \ \ \ \ \ \ vid\ +=\ \mbox{\hyperlink{saugojimas__masyve_8h_a99aa01c3f3fab89e65d302b197eede91}{B}}[j].nd[i];}
+\DoxyCodeLine{\Hypertarget{saugojimas__masyve_8h_source_l00060}00060\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{saugojimas__masyve_8h_source_l00061}00061\ \ \ \ \ vid\ /=\ \mbox{\hyperlink{saugojimas__masyve_8h_a99aa01c3f3fab89e65d302b197eede91}{B}}[j].nd\_sk;}
+\DoxyCodeLine{\Hypertarget{saugojimas__masyve_8h_source_l00062}00062\ \ \ \ \ \textcolor{keywordflow}{return}\ 0.4\ *\ vid\ +\ 0.6\ *\ \mbox{\hyperlink{saugojimas__masyve_8h_a99aa01c3f3fab89e65d302b197eede91}{B}}[j].egz;}
+\DoxyCodeLine{\Hypertarget{saugojimas__masyve_8h_source_l00063}00063\ \}}
+\DoxyCodeLine{\Hypertarget{saugojimas__masyve_8h_source_l00064}00064\ }
+\DoxyCodeLine{\Hypertarget{saugojimas__masyve_8h_source_l00065}\mbox{\hyperlink{saugojimas__masyve_8h_abb77562deb29f7040319003dcf5bcc55}{00065}}\ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{saugojimas__masyve_8h_abb77562deb29f7040319003dcf5bcc55}{galutinis\_med1}}(\textcolor{keywordtype}{int}\ j)\ \{}
+\DoxyCodeLine{\Hypertarget{saugojimas__masyve_8h_source_l00066}00066\ \ \ \ \ std::sort(\mbox{\hyperlink{saugojimas__masyve_8h_a99aa01c3f3fab89e65d302b197eede91}{B}}[j].nd,\ \mbox{\hyperlink{saugojimas__masyve_8h_a99aa01c3f3fab89e65d302b197eede91}{B}}[j].nd\ +\ \mbox{\hyperlink{saugojimas__masyve_8h_a99aa01c3f3fab89e65d302b197eede91}{B}}[j].nd\_sk);}
+\DoxyCodeLine{\Hypertarget{saugojimas__masyve_8h_source_l00067}00067\ \ \ \ \ \textcolor{keywordtype}{double}\ med;}
+\DoxyCodeLine{\Hypertarget{saugojimas__masyve_8h_source_l00068}00068\ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{saugojimas__masyve_8h_a99aa01c3f3fab89e65d302b197eede91}{B}}[j].nd\_sk\ ==\ 0)\ \{}
+\DoxyCodeLine{\Hypertarget{saugojimas__masyve_8h_source_l00069}00069\ \ \ \ \ \ \ \ \ med\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{saugojimas__masyve_8h_source_l00070}00070\ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{saugojimas__masyve_8h_a99aa01c3f3fab89e65d302b197eede91}{B}}[j].nd\_sk\ \%\ 2\ ==\ 0)\ \{}
+\DoxyCodeLine{\Hypertarget{saugojimas__masyve_8h_source_l00071}00071\ \ \ \ \ \ \ \ \ med\ =\ (\mbox{\hyperlink{saugojimas__masyve_8h_a99aa01c3f3fab89e65d302b197eede91}{B}}[j].nd[\mbox{\hyperlink{saugojimas__masyve_8h_a99aa01c3f3fab89e65d302b197eede91}{B}}[j].nd\_sk\ /\ 2\ -\/\ 1]\ +\ \mbox{\hyperlink{saugojimas__masyve_8h_a99aa01c3f3fab89e65d302b197eede91}{B}}[j].nd[\mbox{\hyperlink{saugojimas__masyve_8h_a99aa01c3f3fab89e65d302b197eede91}{B}}[j].nd\_sk\ /\ 2])\ /\ 2.0;}
+\DoxyCodeLine{\Hypertarget{saugojimas__masyve_8h_source_l00072}00072\ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{\Hypertarget{saugojimas__masyve_8h_source_l00073}00073\ \ \ \ \ \ \ \ \ med\ =\ \mbox{\hyperlink{saugojimas__masyve_8h_a99aa01c3f3fab89e65d302b197eede91}{B}}[j].nd[\mbox{\hyperlink{saugojimas__masyve_8h_a99aa01c3f3fab89e65d302b197eede91}{B}}[j].nd\_sk\ /\ 2];}
+\DoxyCodeLine{\Hypertarget{saugojimas__masyve_8h_source_l00074}00074\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{saugojimas__masyve_8h_source_l00075}00075\ \ \ \ \ \textcolor{keywordflow}{return}\ 0.4\ *\ med\ +\ 0.6\ *\ \mbox{\hyperlink{saugojimas__masyve_8h_a99aa01c3f3fab89e65d302b197eede91}{B}}[j].egz;}
+\DoxyCodeLine{\Hypertarget{saugojimas__masyve_8h_source_l00076}00076\ \}}
+\DoxyCodeLine{\Hypertarget{saugojimas__masyve_8h_source_l00077}00077\ }
+\DoxyCodeLine{\Hypertarget{saugojimas__masyve_8h_source_l00078}\mbox{\hyperlink{saugojimas__masyve_8h_af78a8bf3ecd6401001a476f7b9a3d1a4}{00078}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{saugojimas__masyve_8h_af78a8bf3ecd6401001a476f7b9a3d1a4}{write1}}()\ \{}
+\DoxyCodeLine{\Hypertarget{saugojimas__masyve_8h_source_l00079}00079\ \ \ \ \ cout\ <<\ setw(20)\ <<\ left\ <<\ \textcolor{stringliteral}{"{}Vardas"{}}\ <<\ setw(20)\ <<\ left\ <<\ \textcolor{stringliteral}{"{}Pavarde"{}}\ <<\ setw(20)\ <<\ left\ <<\ \textcolor{stringliteral}{"{}Galutinis\ (Vid.)\ /\ Galutinis\ (Med.)"{}}\ <<\ endl;}
+\DoxyCodeLine{\Hypertarget{saugojimas__masyve_8h_source_l00080}00080\ \ \ \ \ cout\ <<\ \textcolor{stringliteral}{"{}-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/"{}}\ <<\ endl;}
+\DoxyCodeLine{\Hypertarget{saugojimas__masyve_8h_source_l00081}00081\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ \mbox{\hyperlink{saugojimas__masyve_8h_a5979a00ba25a20c935f996d586415433}{zmn\_sk}};\ i++)\ \{}
+\DoxyCodeLine{\Hypertarget{saugojimas__masyve_8h_source_l00082}00082\ \ \ \ \ \ \ \ \ cout\ <<\ setw(20)\ <<\ left\ <<\ \mbox{\hyperlink{saugojimas__masyve_8h_a99aa01c3f3fab89e65d302b197eede91}{B}}[i].vardas\ <<\ setw(20)\ <<\ left\ <<\ \mbox{\hyperlink{saugojimas__masyve_8h_a99aa01c3f3fab89e65d302b197eede91}{B}}[i].pavarde\ <<\ setw(20)\ <<\ left\ <<\ fixed\ <<\ setprecision(2)\ <<\ \mbox{\hyperlink{saugojimas__masyve_8h_af93c6820382297058fc720d0c2973090}{galutinis\_vid1}}(i)<<\ setw(20)\ <<\ left\ <<\ \textcolor{stringliteral}{"{}\ /\ "{}}\ <<\ setw(20)\ <<\ left\ <<\ fixed\ <<\ setprecision(2)\ <<\ \mbox{\hyperlink{saugojimas__masyve_8h_abb77562deb29f7040319003dcf5bcc55}{galutinis\_med1}}(i)\ <<\ endl;}
+\DoxyCodeLine{\Hypertarget{saugojimas__masyve_8h_source_l00083}00083\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{saugojimas__masyve_8h_source_l00084}00084\ \}}
+\DoxyCodeLine{\Hypertarget{saugojimas__masyve_8h_source_l00085}00085\ }
+\DoxyCodeLine{\Hypertarget{saugojimas__masyve_8h_source_l00086}00086\ }
+\DoxyCodeLine{\Hypertarget{saugojimas__masyve_8h_source_l00087}00087\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//SAUGOJIMAS\_MASYVE\_H}}
+
+\end{DoxyCode}

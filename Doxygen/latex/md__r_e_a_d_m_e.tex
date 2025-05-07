@@ -1,0 +1,280 @@
+\chapter{Paleidimo instrukcija}
+\hypertarget{md__r_e_a_d_m_e}{}\label{md__r_e_a_d_m_e}\index{Paleidimo instrukcija@{Paleidimo instrukcija}}
+\label{md__r_e_a_d_m_e_autotoc_md0}%
+\Hypertarget{md__r_e_a_d_m_e_autotoc_md0}%
+
+
+1.\+Atsisiųskite programos versiją iš Releases.
+
+2.\+Išarchyvuokite failus.
+
+3.\+Atsidarykite aplankalą.
+
+4.\+1 Paleiskite programą, paspaudus "{}run.\+bat"{}.
+
+4.\+2.\+1 Norint pasileisti programą per terminalą -\/ užkomentuokite pirmą "{}duomenys.\+h"{} eilutę ir atkomentuokite antrą "{}duomenys.\+cpp"{}.
+
+4.\+2.\+2 Norint sukompiliuoti programą per terminalą, įveskite komandą {\ttfamily g++ -\/O3 -\/o programa \doxylink{pirma__uzd_8cpp}{pirma\+\_\+uzd.\+cpp}}.
+
+4.\+2.\+3 Norint paleisti programą, per terminalą įveskite komandą {\ttfamily ./programa}.
+
+4.\+3 Norint pasileisti programą per jūsų pasirinktą editorių -\/ užkomentuokite antrą "{}duomenys.\+cpp"{} eilutę ir atkomentuokite pirmą "{}duomenys.\+h"{}.\hypertarget{md__r_e_a_d_m_e_autotoc_md1}{}\doxysection{\texorpdfstring{V0.\+1 užduotis \{}{V0.\+1 užduotis \{}}\label{md__r_e_a_d_m_e_autotoc_md1}
+V0.\+1 užduotyje buvo parašytas programos pagrindas, kuris sugeneruoja duomenis ir nuskaito juos iš failo ir išveda juos į konsolę.\hypertarget{md__r_e_a_d_m_e_autotoc_md2}{}\doxysection{\texorpdfstring{\}}{\}}}\label{md__r_e_a_d_m_e_autotoc_md2}
+\hypertarget{md__r_e_a_d_m_e_autotoc_md3}{}\doxysection{\texorpdfstring{V0.\+2 užduotis \{}{V0.\+2 užduotis \{}}\label{md__r_e_a_d_m_e_autotoc_md3}
+V0.\+2 užduotyje buvo pridėtas nuskaitymas iš jau prieš tai nugeneruoto failo ir išvedimas į konsolę.\hypertarget{md__r_e_a_d_m_e_autotoc_md4}{}\doxysection{\texorpdfstring{\}}{\}}}\label{md__r_e_a_d_m_e_autotoc_md4}
+\hypertarget{md__r_e_a_d_m_e_autotoc_md5}{}\doxysection{\texorpdfstring{V0.\+3 užduotis \{}{V0.\+3 užduotis \{}}\label{md__r_e_a_d_m_e_autotoc_md5}
+V0.\+3 užduotyje buvo pridėti try catch blokai, kurie užtikrino programos veikimą. Taip pat programa buvo surūšiuota į header ir cpp failus.\hypertarget{md__r_e_a_d_m_e_autotoc_md6}{}\doxysection{\texorpdfstring{\}}{\}}}\label{md__r_e_a_d_m_e_autotoc_md6}
+\hypertarget{md__r_e_a_d_m_e_autotoc_md7}{}\doxysection{\texorpdfstring{V.\+04 užduotis \{}{V.\+04 užduotis \{}}\label{md__r_e_a_d_m_e_autotoc_md7}
+\hypertarget{md__r_e_a_d_m_e_autotoc_md8}{}\doxysection{\texorpdfstring{Tyrimas 1}{Tyrimas 1}}\label{md__r_e_a_d_m_e_autotoc_md8}
+Failų (1000, 10000, 100000, 1000000, 10000000) generavimas vidutiniškai (imant trijų generavimų vidurkį) užtruko 46.\+6222 s.\hypertarget{md__r_e_a_d_m_e_autotoc_md9}{}\doxysection{\texorpdfstring{Tyrimas 2}{Tyrimas 2}}\label{md__r_e_a_d_m_e_autotoc_md9}
+visi testai buvo atliekami po 3 kartus ir paimtas jų vidurkis.
+
+\hypertarget{md__r_e_a_d_m_e_autotoc_md10}{}\doxysection{\texorpdfstring{\}}{\}}}\label{md__r_e_a_d_m_e_autotoc_md10}
+\hypertarget{md__r_e_a_d_m_e_autotoc_md11}{}\doxysection{\texorpdfstring{V1.\+0 užduotis \{}{V1.\+0 užduotis \{}}\label{md__r_e_a_d_m_e_autotoc_md11}
+CPU\+:Intel(\+R) Core(\+TM) i7-\/10510U CPU @ 1.\+80\+GHz 2.\+30 GHz
+
+RAM\+: 16.\+0 GB
+
+SSD\+:KXG6\+AZNV512G TOSHIBA M.\+2 2280
+
+\hypertarget{md__r_e_a_d_m_e_autotoc_md12}{}\doxysection{\texorpdfstring{\}}{\}}}\label{md__r_e_a_d_m_e_autotoc_md12}
+\hypertarget{md__r_e_a_d_m_e_autotoc_md13}{}\doxysection{\texorpdfstring{V1.\+1 užduotis \{}{V1.\+1 užduotis \{}}\label{md__r_e_a_d_m_e_autotoc_md13}
+Tyrimai atlikti su O1, O2, O3 optimizacijomis.  O1 flag\textquotesingle{}o exe failo dydis -\/ 242KB
+
+O2 flag\textquotesingle{}o exe failo dydis -\/ 206KB
+
+O3 flag\textquotesingle{}o exe failo dydis -\/ 204KB
+
+Palyginus rezultatus su struktūros ir klasės optimizacijomis, pastebėta, kad klasės optimizacija yra greitesnė (mazdaug 2 kartus) už struktūros optimizaciją. Taip pat pastebėta, kad O3 optimizacija yra greitesnė už O2 ir O1 optimizacijas.\hypertarget{md__r_e_a_d_m_e_autotoc_md14}{}\doxysection{\texorpdfstring{\}}{\}}}\label{md__r_e_a_d_m_e_autotoc_md14}
+\hypertarget{md__r_e_a_d_m_e_autotoc_md15}{}\doxysection{\texorpdfstring{V1.\+2 užduotis \{}{V1.\+2 užduotis \{}}\label{md__r_e_a_d_m_e_autotoc_md15}
+Copy construktorius -\/ is vieno objekto nukopijuoja i kita objekta.
+
+Copy assignment operatorius -\/ is vieno objekto nukopijuoja i kita objekta, kai objektai jau egzistuoja.
+
+Move construktorius -\/ is vieno objekto perkelia i kita objekta, kai objektas neegzistuoja, ir objektas, is kurio keliame, yra sunaikinamas.
+
+Move assignment operatorius -\/ is vieno objekto perkelia i kita objekta, kai objektas jau egzistuoja, ir objektas, is kurio keliame, yra sunaikinamas.
+
+Destruktorius -\/ sunaikina objekta, kai jis nebereikalingas.
+
+Input operatorius -\/ leidzia nuskaityti objekta is failo ir perdengia default input operatoriu.
+
+Output operatorius -\/ leidzia isvesti objekta i faila ir perdengia default output operatoriu.
+
+\DoxyHorRuler{0}
+ 1000
+
+\tabulinesep=1mm
+\begin{longtabu}spread 0pt [c]{*{2}{|X[-1]}|}
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ laikas   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ sek.    }\\\cline{1-2}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ laikas   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ sek.    }\\\cline{1-2}
+\endhead
+Nuskaitymo laikas\+:   &0.\+0559618s    \\\cline{1-2}
+rusiavimo didejimo tvarka laikas\+:   &0.\+0007691s    \\\cline{1-2}
+dalinimo laikas\+:   &0.\+0018016s    \\\cline{1-2}
+Is viso laiko\+:   &0.\+0585325s   \\\cline{1-2}
+\end{longtabu}
+
+
+\DoxyHorRuler{0}
+
+
+\DoxyHorRuler{0}
+ 10000
+
+\tabulinesep=1mm
+\begin{longtabu}spread 0pt [c]{*{2}{|X[-1]}|}
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ laikas   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ sek.    }\\\cline{1-2}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ laikas   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ sek.    }\\\cline{1-2}
+\endhead
+Nuskaitymo laikas\+:   &0.\+0935924s    \\\cline{1-2}
+rusiavimo didejimo tvarka laikas\+:   &0.\+09089s    \\\cline{1-2}
+dalinimo laikas\+:   &0.\+0085245s    \\\cline{1-2}
+Is viso laiko\+:   &0.\+109313s   \\\cline{1-2}
+\end{longtabu}
+
+
+\DoxyHorRuler{0}
+
+
+\DoxyHorRuler{0}
+ 100000
+
+\tabulinesep=1mm
+\begin{longtabu}spread 0pt [c]{*{2}{|X[-1]}|}
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ laikas   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ sek.    }\\\cline{1-2}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ laikas   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ sek.    }\\\cline{1-2}
+\endhead
+Nuskaitymo laikas\+:   &0.\+491717s    \\\cline{1-2}
+rusiavimo didejimo tvarka laikas\+:   &0.\+09089s    \\\cline{1-2}
+dalinimo laikas\+:   &0.\+0994205s    \\\cline{1-2}
+Is viso laiko\+:   &0.\+682028s   \\\cline{1-2}
+\end{longtabu}
+
+
+\DoxyHorRuler{0}
+
+
+\DoxyHorRuler{0}
+ 1000000
+
+\tabulinesep=1mm
+\begin{longtabu}spread 0pt [c]{*{2}{|X[-1]}|}
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ laikas   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ sek.    }\\\cline{1-2}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ laikas   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ sek.    }\\\cline{1-2}
+\endhead
+Nuskaitymo laikas\+:   &3.\+03551s    \\\cline{1-2}
+rusiavimo didejimo tvarka laikas\+:   &0.\+907027s    \\\cline{1-2}
+dalinimo laikas\+:   &0.\+963172s    \\\cline{1-2}
+Is viso laiko\+:   &4.\+90571s   \\\cline{1-2}
+\end{longtabu}
+
+
+\DoxyHorRuler{0}
+
+
+\DoxyHorRuler{0}
+ 10000000
+
+\tabulinesep=1mm
+\begin{longtabu}spread 0pt [c]{*{2}{|X[-1]}|}
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ laikas   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ sek.    }\\\cline{1-2}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ laikas   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ sek.    }\\\cline{1-2}
+\endhead
+Nuskaitymo laikas\+:   &31.\+1019s    \\\cline{1-2}
+rusiavimo didejimo tvarka laikas\+:   &9.\+76324s    \\\cline{1-2}
+dalinimo laikas\+:   &10.\+3145s    \\\cline{1-2}
+Is viso laiko\+:   &51.\+1796s   \\\cline{1-2}
+\end{longtabu}
+
+
+\DoxyHorRuler{0}
+
+
+Palyginus su praeita versija, pastebime, kad programa veikia greiciau.
+
+Isvada -\/ naudojant "{}rule of five"{} bei perdengiant ivedimo ir isvedimo operatorius, programa veikia greiciau. \hypertarget{md__r_e_a_d_m_e_autotoc_md26}{}\doxysection{\texorpdfstring{\}}{\}}}\label{md__r_e_a_d_m_e_autotoc_md26}
+\hypertarget{md__r_e_a_d_m_e_autotoc_md27}{}\doxysection{\texorpdfstring{V1.\+5 užduotis \{}{V1.\+5 užduotis \{}}\label{md__r_e_a_d_m_e_autotoc_md27}
+Sukurta Abstrakti klase "{}\+Zmogus"{}, kuri aprasyta "{}zmogus.\+h"{} faile. Is sios klases isejo derived klase "{}\+Studentas"{}.
+
+1000
+
+\tabulinesep=1mm
+\begin{longtabu}spread 0pt [c]{*{2}{|X[-1]}|}
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ laikas   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ sek.    }\\\cline{1-2}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ laikas   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ sek.    }\\\cline{1-2}
+\endhead
+Nuskaitymo laikas\+:   &0.\+0384418s    \\\cline{1-2}
+rusiavimo didejimo tvarka laikas\+:   &0.\+0011993s    \\\cline{1-2}
+dalinimo laikas\+:   &0.\+0020543s    \\\cline{1-2}
+Is viso laiko\+:   &0.\+0416954s   \\\cline{1-2}
+\end{longtabu}
+
+
+10000
+
+\tabulinesep=1mm
+\begin{longtabu}spread 0pt [c]{*{2}{|X[-1]}|}
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ laikas   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ sek.    }\\\cline{1-2}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ laikas   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ sek.    }\\\cline{1-2}
+\endhead
+Nuskaitymo laikas\+:   &0.\+0762262s    \\\cline{1-2}
+rusiavimo didejimo tvarka laikas\+:   &0.\+0086051s    \\\cline{1-2}
+dalinimo laikas\+:   &0.\+010063s    \\\cline{1-2}
+Is viso laiko\+:   &0.\+010063s   \\\cline{1-2}
+\end{longtabu}
+
+
+100000
+
+\tabulinesep=1mm
+\begin{longtabu}spread 0pt [c]{*{2}{|X[-1]}|}
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ laikas   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ sek.    }\\\cline{1-2}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ laikas   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ sek.    }\\\cline{1-2}
+\endhead
+Nuskaitymo laikas\+:   &0.\+261733s    \\\cline{1-2}
+rusiavimo didejimo tvarka laikas\+:   &0.\+10739s    \\\cline{1-2}
+dalinimo laikas\+:   &0.\+114907s    \\\cline{1-2}
+Is viso laiko\+:   &0.\+484031s   \\\cline{1-2}
+\end{longtabu}
+
+
+1000000
+
+\tabulinesep=1mm
+\begin{longtabu}spread 0pt [c]{*{2}{|X[-1]}|}
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ laikas   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ sek.    }\\\cline{1-2}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ laikas   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ sek.    }\\\cline{1-2}
+\endhead
+Nuskaitymo laikas\+:   &2.\+03144s    \\\cline{1-2}
+rusiavimo didejimo tvarka laikas\+:   &1.\+28536s    \\\cline{1-2}
+dalinimo laikas\+:   &1.\+3503s    \\\cline{1-2}
+Is viso laiko\+:   &4.\+6671s   \\\cline{1-2}
+\end{longtabu}
+
+
+10000000
+
+\tabulinesep=1mm
+\begin{longtabu}spread 0pt [c]{*{2}{|X[-1]}|}
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ laikas   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ sek.    }\\\cline{1-2}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ laikas   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ sek.    }\\\cline{1-2}
+\endhead
+Nuskaitymo laikas\+:   &20.\+8932s    \\\cline{1-2}
+rusiavimo didejimo tvarka laikas\+:   &13.\+888s    \\\cline{1-2}
+dalinimo laikas\+:   &14.\+558s    \\\cline{1-2}
+Is viso laiko\+:   &49.\+3392s   \\\cline{1-2}
+\end{longtabu}
+
+
+Atlikus tyrimus pastebima, kad programa veikia greiciau nei praeita versija. taip pat prideta nauja abstrakti klase "{}\+Zmogus"{}. \hypertarget{md__r_e_a_d_m_e_autotoc_md28}{}\doxysection{\texorpdfstring{\}}{\}}}\label{md__r_e_a_d_m_e_autotoc_md28}
